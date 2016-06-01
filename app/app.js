@@ -14,9 +14,9 @@ app.config(function($routeProvider) {
       templateUrl: "./partials/accountLedger.html",
       controller: "accountLedgerController"
     }).
-    when("/builder", {
-      templateUrl: "./partials/chequeBuilder.html",
-      controller: "chequeBuilderController"
+    when("/writer", {
+      templateUrl: "./partials/chequeWriter.html",
+      controller: "chequeWriterController"
     }).
     otherwise("/");
 });
