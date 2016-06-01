@@ -7,10 +7,15 @@
   <title>Cheque Yourself!</title>
 </head>
 <body ng-app="ChequeYrslf">
-  
-  <div ng-controller="navBarController">
-    {{navItems}}
-  </div>  
+
+<!-- Navbar Position   -->
+<div ng-include="'./partials/navbar.html'"></div>
+
+
+<!-- Main Body Position -->
+<div ng-view></div>
+
+
 
   <!-- Libraries -->
   <script type="text/javascript" src="./lib/bower_components/angular/angular.js"></script>
@@ -25,5 +30,6 @@
   <!-- My Code -->
   <script type="text/javascript" src="./app/app.js"></script>
   <script type="text/javascript" src="./app/controllers/navBarController.js"></script>
+  <script type="text/javascript" src="./app/controllers/appChoiceController.js"></script>
 </body>
 </html>
