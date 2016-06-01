@@ -2,8 +2,7 @@
 
 app.controller("appChoiceController", function($scope){
 
-  $scope.ledgerTitle = "Account Ledger";
-
   $scope.ledgerClick = () => console.log("You clicked the Ledger");
+  $scope.writerClick = () => console.log("You clicked the writer");
 
 });
