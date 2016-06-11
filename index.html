@@ -2,24 +2,36 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <link rel="stylesheet" type="text/css" href="./lib/bower_components/angular-material/angular-material.min.css">
+  <link rel="stylesheet" type="text/css" href="./lib/bower_components/angular-material/angular-material.css">
   <link rel="stylesheet" type="text/css" href="./css/mainstyle.css">
   <title>Cheque Yourself!</title>
 </head>
-<body ng-app="ChequeYrslf" ng-cloak>
-  
+<body ng-app="ChequeYrslf">
+
+<!-- Navbar Position   -->
+<div ng-include="'./partials/navbar.html'"></div>
+
+
+<!-- Main Body Position -->
+<div ng-view></div>
+
 
 
   <!-- Libraries -->
-  <script type="text/javascript" src="./lib/bower_components/angular/angular.min.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/angular-animate/angular-animate.min.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/angular-aria/angular-aria.min.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/angular-messages/angular-messages.min.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/angular-material/angular-material.min.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.min.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular/angular.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-route/angular-route.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-animate/angular-animate.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-aria/angular-aria.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-messages/angular-messages.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-material/angular-material.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
   <script type="text/javascript" src="./lib/bower_components/jquery-ui/jquery-ui.js"></script>
 
   <!-- My Code -->
-  <script type="text/javascript" src="app/mainapp.js"></script>
+  <script type="text/javascript" src="./app/app.js"></script>
+  <script type="text/javascript" src="./app/controllers/navBarController.js"></script>
+  <script type="text/javascript" src="./app/controllers/appChoiceController.js"></script>
+  <script type="text/javascript" src="./app/controllers/chequeWriterController.js"></script>
+  <script type="text/javascript" src="./app/controllers/accountLedgerController.js"></script>
 </body>
 </html>
