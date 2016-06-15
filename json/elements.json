@@ -1,0 +1,84 @@
+{
+  "domElements": {
+    "bank": {
+      "inputType": "blankInput",
+      "containerTitle": "Bank Address",
+      "id": "bank-name",
+      "position" : "left: 4.79in; top: 0.40in;",
+      "internalText": "1st Bank of\nCuccooTown",
+      "specialClass": ""
+    },
+    "checkNumber": {
+      "inputType": "blankInput",
+      "containerTitle": "Check Number",
+      "id": "check-num",
+      "position": "left: 7.0in; top: 0.12in;",
+      "internalText": "No. 1000",
+      "specialClass": ""
+      },
+    "fracRoutingNum": {
+      "inputType": "blankInput",
+      "containerTitle": "Frac Bnk #",
+      "id": "bnk-frac",
+      "position": "left: 7.45in; top: 0.56in;",
+      "internalText": "123-123/123",
+      "specialClass": ""
+      },
+    "mirc": {
+      "inputType": "blankInput",
+      "containerTitle": "MIRC Check, Routing and Account Numbers",
+      "id": "routing-number",
+      "position": "left: 1.40625in; top: 3.120in;",
+      "internalText": "O000000O T000000000T 0000000000O",
+      "specialClass": " ttfont"
+    },
+    "payor": {
+      "inputType": "blankInput",
+      "containerTitle": "Payor Address",
+      "id": "payor-address",
+      "position": "left: 0.9375in; top: 0.375in;",
+      "internalText": "Joe Anonymous\n1143 East West Rd\nWhoville, TN 33124",
+      "specialClass": ""
+    },
+    "date": {
+      "inputType": "contentInput",
+      "containerTitle": "Date of Check",
+      "id": "date-line",
+      "position": ["left: 6.0in; top: 0.83in;", "left: 0.40in; bottom: 0.25in; width: 1.1in;"],
+      "internalText": "Date ______________",
+      "specialClass": ""
+    },
+    "memo": {
+      "inputType": "contentInput",
+      "containerTitle": "Memo Line",
+      "id": "memo-line",
+      "position": ["left: 0.41in; top: 2.64in;", "left: 0.65in; bottom: 0.25in; width: 1.9in;"],
+      "internalText": "MEMO _________________________",
+      "specialClass": ""
+    },
+    "payee": {
+      "inputType": "contentInput",
+      "containerTitle": "Payee Info",
+      "id": "payee-name",
+      "position": ["left: 0.37in; top: 1.05in;", "left: 0.85in; bottom: 0.05in; width: 5.85in;", "left: 7in; bottom: 0.05in; width: 0.9in;"],
+      "internalText": "Pay To The\nOrder Of __________________________________________________________________________ $ ___________",
+      "specialClass": ""
+    },
+    "writtenPayment": {
+      "inputType": "contentInput",
+      "containerTitle": "Written Payment",
+      "id": "written-amount",
+      "position": ["left: 0.39in; top: 1.73in;", "left: 0.1in; bottom: 0.25in; width: 7.2in;"],
+      "internalText": "________________________________________________________________________________________ Dollars",
+      "specialClass": ""
+      },
+    "signature": {
+      "inputType": "contentInput",
+      "containerTitle": "Signature Line",
+      "id": "sig-line",
+      "position": ["left: 5.49in; top: 2.34in;", "bottom: 0.45in; width: 2.3in;"],
+      "internalText": "____________________________\nAUTHORIZED SIGNATURE",
+      "specialClass": ""
+    }
+  }
+}
