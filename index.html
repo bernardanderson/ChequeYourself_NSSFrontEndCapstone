@@ -11,27 +11,15 @@
 <!-- Navbar Position   -->
 <div ng-controller="navBarController as navBar">
   {{navItems}}
-<button ng-click="clickChange()">Click Me</button>
-</div>
+  <button ng-click="clickChange('accountLedger')">Account Ledger</button>
+  <button ng-click="clickChange('chequeWriter')">Cheque Writer</button>
+
 
 <!-- Main Body Position -->
-  <section id="content-area" ng-controller="checkBuilderAJs">
-    <div id="check-area">
-      <div id="check-1">
-        <x-bank-address></x-bank-address>
-        <x-check-number></x-check-number>
-        <x-frac-routing></x-frac-routing>
-        <x-mirc-code></x-mirc-code>
-        <x-payor></x-payor>
-        <x-check-date></x-check-date>
-        <x-check-memo></x-check-memo>
-        <x-payee></x-payee>
-        <x-written-payment></x-written-payment>
-        <x-check-signature></x-check-signature>
-      </div>
-    </div>
-  </section>
-<!-- <div ng-if="navBar.clicked" ng-include="'./partials/appChoice.html'"></div> -->
+  <div ng-if="navBar.clicked == 'appChoice'" ng-include="'./partials/appChoice.html'"></div>
+  <div ng-if="navBar.clicked == 'accountLedger'" ng-include="'./partials/accountLedger.html'"></div>
+  <div ng-if="navBar.clicked == 'chequeWriter'" ng-include="'./partials/chequeWriter.html'"></div>
+</div>
 
 
   <!-- Framework Libraries -->
