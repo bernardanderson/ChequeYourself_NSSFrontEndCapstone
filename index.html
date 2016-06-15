@@ -9,15 +9,17 @@
 <body ng-app="ChequeYrslf">
 
 <!-- Navbar Position   -->
-<div ng-include="'./partials/navbar.html'"></div>
-
+<div ng-controller="navBarController as navBar">
+  {{navItems}}
+<button ng-click="clickChange()">Click Me</button>
 
 <!-- Main Body Position -->
-<div ng-view></div>
 
+<div ng-if="navBar.clicked" ng-include="'./partials/appChoice.html'"></div>
 
+</div>
 
-  <!-- Libraries -->
+  <!-- Framework Libraries -->
   <script type="text/javascript" src="./lib/bower_components/angular/angular.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-route/angular-route.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-animate/angular-animate.js"></script>
