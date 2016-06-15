@@ -1,0 +1,9 @@
+<div dragme class="title-container showview draggable" ng-mouseenter="changeHide()" ng-mouseleave="changeHide()" style="{{checkEntryElementData.writtenPayment.position[0]}}">
+  <div class="inputter">{{checkEntryElementData.writtenPayment.internalText}}
+    <div class="blank-inputter" contenteditable="true" style="{{checkEntryElementData.writtenPayment.position[1]}}"></div>
+  </div>
+  <div ng-style="{visibility: hideElement && 'visible' || 'hidden'}">
+    <p class="info-font print-remove">{{checkEntryElementData.writtenPayment.containerTitle}}</p>
+    <img class="window-icon settings print-remove" src="./img/settings.png" alt="Settings Button" ng-click="">
+  </div>
+</div>

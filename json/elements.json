@@ -1,6 +1,6 @@
 {
   "domElements": {
-    "bank": {
+    "bankAddress": {
       "inputType": "blankInput",
       "containerTitle": "Bank Address",
       "id": "bank-name",
@@ -16,7 +16,7 @@
       "internalText": "No. 1000",
       "specialClass": ""
       },
-    "fracRoutingNum": {
+    "fracRouting": {
       "inputType": "blankInput",
       "containerTitle": "Frac Bnk #",
       "id": "bnk-frac",
@@ -24,7 +24,7 @@
       "internalText": "123-123/123",
       "specialClass": ""
       },
-    "mirc": {
+    "mircCode": {
       "inputType": "blankInput",
       "containerTitle": "MIRC Check, Routing and Account Numbers",
       "id": "routing-number",
@@ -40,15 +40,15 @@
       "internalText": "Joe Anonymous\n1143 East West Rd\nWhoville, TN 33124",
       "specialClass": ""
     },
-    "date": {
+    "checkDate": {
       "inputType": "contentInput",
       "containerTitle": "Date of Check",
       "id": "date-line",
-      "position": ["left: 6.0in; top: 0.83in;", "left: 0.40in; bottom: 0.25in; width: 1.1in;"],
+      "position": ["left: 6.0in; top: 0.83in;", "left: 0.40in; bottom: 0.25in; width: 1.3in;"],
       "internalText": "Date ______________",
       "specialClass": ""
     },
-    "memo": {
+    "checkMemo": {
       "inputType": "contentInput",
       "containerTitle": "Memo Line",
       "id": "memo-line",
@@ -60,8 +60,8 @@
       "inputType": "contentInput",
       "containerTitle": "Payee Info",
       "id": "payee-name",
-      "position": ["left: 0.37in; top: 1.05in;", "left: 0.85in; bottom: 0.05in; width: 5.85in;", "left: 7in; bottom: 0.05in; width: 0.9in;"],
-      "internalText": "Pay To The\nOrder Of __________________________________________________________________________ $ ___________",
+      "position": ["left: 0.37in; top: 1.05in;", "left: 0.90in; bottom: 0.65in; width: 5.80in;", "left: 6.95in; bottom: 0.65in; width: 0.9in;"],
+      "internalText": "Pay To The\nOrder Of _________________________________________________________________ $ ___________",
       "specialClass": ""
     },
     "writtenPayment": {
@@ -69,14 +69,14 @@
       "containerTitle": "Written Payment",
       "id": "written-amount",
       "position": ["left: 0.39in; top: 1.73in;", "left: 0.1in; bottom: 0.25in; width: 7.2in;"],
-      "internalText": "________________________________________________________________________________________ Dollars",
+      "internalText": "_______________________________________________________________________________ Dollars",
       "specialClass": ""
       },
-    "signature": {
+    "checkSignature": {
       "inputType": "contentInput",
       "containerTitle": "Signature Line",
       "id": "sig-line",
-      "position": ["left: 5.49in; top: 2.34in;", "bottom: 0.45in; width: 2.3in;"],
+      "position": ["left: 5.49in; top: 2.34in;", "bottom: 0.80in; width: 2.6in;"],
       "internalText": "____________________________\nAUTHORIZED SIGNATURE",
       "specialClass": ""
     }

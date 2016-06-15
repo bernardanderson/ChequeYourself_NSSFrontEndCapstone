@@ -17,7 +17,7 @@ app.directive('dragme', ['$document', function($document) {
         $document.on('mousemove', mousemove);
         $document.on('mouseup', mouseup);
 
-        console.log(event)
+        // console.log(event)
         // console.log(startX, startY);
         // console.log(x, y);
         // console.log(event.pageX, event.pageY);

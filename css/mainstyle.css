@@ -4,6 +4,11 @@ body {
   margin: 0;
 }
 
+
+.quick-border {
+  border: 1px solid green;
+}
+
 /**/
 /*START OF - Styling needed for the navbar*/
 /**/
@@ -32,7 +37,7 @@ shifted by the fix navbar at the top*/
   position: relative;
   width: 8.5in;
   height: 11in;
-  /*background: url(../img/blankchecks.jpg);*/
+  background: url(../img/blankchecks.jpg);
   background-size: 8.5in 11in;
 }
 
@@ -88,9 +93,13 @@ image at the native 8.5x11in width-height*/
   min-width: 0.1in;
   cursor: text;
   background-color: transparent;
-  white-space: pre-wrap;
   -moz-user-select: none;
   -webkit-user-select: none;
+}
+
+.inputter-whitespace {
+  text-align: left;
+  white-space: pre-wrap;
 }
 
 /*Turns off selecting of the title/info container*/
@@ -102,7 +111,7 @@ image at the native 8.5x11in width-height*/
 
 /* Styles the blank input areas for parts of the template that have a text label*/
 .blank-inputter {
-  /*position: absolute;*/
+  position: absolute;
   background-color: rgba(255,255,224, 0.6);
   white-space: nowrap;
   overflow: hidden;
