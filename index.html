@@ -14,8 +14,13 @@
 <button ng-click="clickChange()">Click Me</button>
 
 <!-- Main Body Position -->
-
-<div ng-if="navBar.clicked" ng-include="'./partials/appChoice.html'"></div>
+  <section id="content-area" ng-controller="checkBuilderAJs">
+    <div id="check-area">
+      <data-bank-address/>
+      <div id="check-1"></div>
+    </div>
+  </section>
+<!-- <div ng-if="navBar.clicked" ng-include="'./partials/appChoice.html'"></div> -->
 
 </div>
 
@@ -26,14 +31,18 @@
   <script type="text/javascript" src="./lib/bower_components/angular-aria/angular-aria.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-messages/angular-messages.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-material/angular-material.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/jquery-ui/jquery-ui.js"></script>
+  <!-- <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script> -->
+  <!-- <script type="text/javascript" src="./lib/bower_components/jquery-ui/jquery-ui.js"></script> -->
 
   <!-- My Code -->
   <script type="text/javascript" src="./app/app.js"></script>
+  <script type="text/javascript" src="./app/factories/XHRFactory.js"></script>
+  <script type="text/javascript" src="./app/controllers/checkBuilderAJs.js"></script>
   <script type="text/javascript" src="./app/controllers/navBarController.js"></script>
   <script type="text/javascript" src="./app/controllers/appChoiceController.js"></script>
   <script type="text/javascript" src="./app/controllers/chequeWriterController.js"></script>
   <script type="text/javascript" src="./app/controllers/accountLedgerController.js"></script>
+  <script type="text/javascript" src="./app/directives/draggableElements.js"></script>
+  <script type="text/javascript" src="./app/directives/domElementLibrary.js"></script>
 </body>
 </html>
