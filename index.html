@@ -9,29 +9,50 @@
 <body ng-app="ChequeYrslf">
 
 <!-- Navbar Position   -->
-<div ng-include="'./partials/navbar.html'"></div>
-
+<div ng-controller="navBarController as navBar">
+  {{navItems}}
+<button ng-click="clickChange()">Click Me</button>
+</div>
 
 <!-- Main Body Position -->
-<div ng-view></div>
+  <section id="content-area" ng-controller="checkBuilderAJs">
+    <div id="check-area">
+      <div id="check-1">
+        <x-bank-address></x-bank-address>
+        <x-check-number></x-check-number>
+        <x-frac-routing></x-frac-routing>
+        <x-mirc-code></x-mirc-code>
+        <x-payor></x-payor>
+        <x-check-date></x-check-date>
+        <x-check-memo></x-check-memo>
+        <x-payee></x-payee>
+        <x-written-payment></x-written-payment>
+        <x-check-signature></x-check-signature>
+      </div>
+    </div>
+  </section>
+<!-- <div ng-if="navBar.clicked" ng-include="'./partials/appChoice.html'"></div> -->
 
 
-
-  <!-- Libraries -->
+  <!-- Framework Libraries -->
   <script type="text/javascript" src="./lib/bower_components/angular/angular.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-route/angular-route.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-animate/angular-animate.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-aria/angular-aria.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-messages/angular-messages.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-material/angular-material.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/jquery-ui/jquery-ui.js"></script>
+  <!-- <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script> -->
+  <!-- <script type="text/javascript" src="./lib/bower_components/jquery-ui/jquery-ui.js"></script> -->
 
   <!-- My Code -->
   <script type="text/javascript" src="./app/app.js"></script>
+  <script type="text/javascript" src="./app/factories/XHRFactory.js"></script>
+  <script type="text/javascript" src="./app/controllers/checkBuilderAJs.js"></script>
   <script type="text/javascript" src="./app/controllers/navBarController.js"></script>
   <script type="text/javascript" src="./app/controllers/appChoiceController.js"></script>
   <script type="text/javascript" src="./app/controllers/chequeWriterController.js"></script>
   <script type="text/javascript" src="./app/controllers/accountLedgerController.js"></script>
+  <script type="text/javascript" src="./app/directives/draggableElements.js"></script>
+  <script type="text/javascript" src="./app/directives/domElementLibrary.js"></script>
 </body>
 </html>

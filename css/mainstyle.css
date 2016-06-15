@@ -1,0 +1,220 @@
+body {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+
+.quick-border {
+  border: 1px solid green;
+}
+
+/**/
+/*START OF - Styling needed for the navbar*/
+/**/
+/*Styles the navbar header so it is fixed to the top and is static */
+#nav-holder {
+  display: block;
+  width: 100%;
+  position: fixed;
+  padding: 0.1in;
+  z-index: 100;
+  background-color: rgba(255, 255, 255, 0.80);
+  border-bottom: 1px solid black;
+}
+
+/*Shifts the section element holding the non-navbar info down so it's not covered by the nav*/
+#content-area {
+  width: 8.5in;
+  height: 11in;
+  padding: 0.40in 0 0 0;
+  overflow: hidden;
+}
+
+/*Makes the positioning of the check-holding div relative so the fixed elements within don't get
+shifted by the fix navbar at the top*/
+#check-area {
+  position: relative;
+  width: 8.5in;
+  height: 11in;
+  background: url(../img/blankchecks.jpg);
+  background-size: 8.5in 11in;
+}
+
+/**/
+/*END OF - Styling needed for the navbar*/
+/**/
+
+/*For the blank check background image, in order to have it print correctly you need to have the
+image at the native 8.5x11in width-height*/
+#blank-checks {
+  width: 8.5in;
+  height: 11in;
+  padding: 0;
+  margin: 0;
+}
+
+/*Styling for the three blank check divs*/
+/**/
+#check-1 {
+  position: absolute;
+  top: 0;
+  width: 8.5in;
+  height: 3.5in;
+}
+
+#check-2 {
+  position: absolute;
+  top: 3.5in;
+  width: 8.5in;
+  height: 3.5in;
+}
+
+#check-3 {
+  position: absolute;
+  top: 7in;
+  width: 8.5in;
+  height: 3.5in;
+}
+/**//**/
+
+/*Styles the complete movable div input element*/
+.draggable {
+  display: inline-block;
+  cursor: move;
+  position: absolute;
+  border-radius: 5px;
+  width: auto;
+}
+
+/*Styles the editable text input boxes */
+.inputter {
+  display: inline-block;
+  min-width: 0.1in;
+  cursor: text;
+  background-color: transparent;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+.inputter-whitespace {
+  text-align: left;
+  white-space: pre-wrap;
+}
+
+/*Turns off selecting of the title/info container*/
+.title-container {
+  display: inline-block;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+}
+
+/* Styles the blank input areas for parts of the template that have a text label*/
+.blank-inputter {
+  position: absolute;
+  background-color: rgba(255,255,224, 0.6);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/*This styles the container holding the settings buttons that is initally hidden*/
+.button-container, .title-container {
+  display: block; 
+  width: auto;
+  text-align: center;
+  visibility: hidden;
+}
+
+/*Styles the title font for the complete movable div input element*/
+.info-font {
+  display: inline-block;
+  font-size: 8pt;
+  padding: 0;
+  margin: 0 auto;
+}
+
+/*Make the designated handles for the movable boxes have the move hand*/
+.handle {
+  cursor: move;
+}
+
+/*Styles any icon in the complete movable div input element*/
+.window-icon {
+  display: inline-block;
+  width: 10px;
+  vertical-align: bottom;
+  height: auto;
+  padding: 2px;
+  cursor: pointer;
+}
+
+/*Bulk styles the buttons shown from the holding the settings buttons that is initally hidden*/
+.button-row {
+  display: inline-block;
+  width: auto;
+  font-size: 9pt;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 3px;
+  padding: 0 3px;
+  margin: 2px 0 3px 0;
+  border: 1px solid black;
+  background-color: lightgray;
+}
+
+/*Styles hidden objects that have a temporary display from something like a mouseover */
+.showview {
+  visibility: visible;
+}
+
+/*------------*/
+/*START OF - CSS Styling for the MICRU Truetype font*/
+/*------------*/
+@font-face {
+  font-family: "CovixMICRU";
+  src: url("../img/CovixMICRU.ttf") format("truetype");
+}
+
+.ttfont {
+  /* To access special characters: & or T, - (minus), $, O (oh) */
+  font-family: "CovixMICRU", sans-serif;
+  font-size: 9pt;
+}
+/*------------*/
+/*END OF - CSS Styling for the MICRU Truetype font*/
+/*------------*/
+
+/*------------*/
+/*START OF - Print Styling
+   Style your elements so that when you print, you only see the text that you entered, none of the menu styling is shown*/
+/*------------*/
+@media print { 
+
+  .draggable {
+    background-color: transparent;
+  }
+
+  .inputter {
+    border: none;
+  }
+
+  #nav-holder {
+    display: none;
+  }
+
+  #content-area {
+    padding: 0;
+  }
+
+  .print-remove {
+    visibility: hidden;
+  }
+
+  .blank-inputter {
+    background-color: transparent;
+  }
+
+}
+/*------------*/
+/*END OF - Print Styling*/
+/*------------*/
