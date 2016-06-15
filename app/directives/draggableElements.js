@@ -10,27 +10,21 @@ app.directive('dragme', ['$document', function($document) {
         //  because it blocks the editing of contentedited elements
         // event.preventDefault();
 
-        console.log(this)
+        var movingDiv = this.getBoundingClientRect()
 
-        var r = this.getBoundingClientRect()
-        console.log("Top/Left: "+r.top+" / "+r.left)
-        console.log("Right/Bottom: "+r.right+" / "+r.bottom)
-
-
-
-        startX = event.pageX - r.left;
-        startY = event.pageY - r.top;
+        startX = event.pageX - movingDiv.left;
+        startY = event.pageY - movingDiv.top;
         $document.on('mousemove', mousemove);
         $document.on('mouseup', mouseup);
 
         console.log(event)
-        console.log(startX, startY);
-        console.log(x, y);
-        console.log(event.pageX, event.pageY);
+        // console.log(startX, startY);
+        // console.log(x, y);
+        // console.log(event.pageX, event.pageY);
       });
 
       function mousemove(event) {
-        y = event.pageY - startY;
+        y = event.pageY - startY-65;
         x = event.pageX - startX;
 
         // Keeps the objects from moving off screen to the left
