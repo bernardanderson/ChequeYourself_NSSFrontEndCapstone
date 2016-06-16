@@ -1,0 +1,57 @@
+<md-content layout-gt-sm="row" >
+    <md-input-container flex="20">
+      <label>Account NickName</label>
+      <input ng-model="newAccount.nickName">
+    </md-input-container>
+</md-content>
+<md-content layout-gt-sm="row" >
+    <md-input-container flex="20">
+      <label>Bank Name</label>
+      <input ng-model="newAccount.bankName">
+    </md-input-container>
+    <md-input-container flex="30">
+      <label>Bank Street Number</label>
+      <input ng-model="newAccount.bankStreet">
+    </md-input-container>
+    <md-input-container flex="10" class="md-block" flex-gt-sm>
+      <label>State</label>
+      <md-select ng-model="newAccount.bankState">
+        <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+          {{state.abbrev}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+    <md-input-container flex="10">
+      <label>Bank Zip Code</label>
+      <input ng-model="newAccount.bankZip">
+    </md-input-container>
+</md-content>
+
+<md-content layout-gt-sm="row" >
+
+  <md-input-container flex="20">
+    <label>ABA Routing Number</label>
+    <input ng-model="newAccount.routingNumber">
+  </md-input-container>
+
+  <md-input-container flex="20">
+    <label>Account Number</label>
+    <input ng-model="newAccount.accountNumber">
+  </md-input-container>
+
+  <md-input-container flex="15" class="md-block" flex-gt-sm>
+  <p>Account Type: </p>
+    <md-radio-group ng-model="newAccount.accountType">
+      <md-radio-button value="checking" class="md-primary">Checking</md-radio-button>
+      <md-radio-button value="savings"> Savings</md-radio-button>
+    </md-radio-group>
+  </md-input-container>
+
+</md-content>
+
+<md-content layout-gt-sm="row" >
+    <md-input-container flex="70" class="md-block">
+      <label>Account Notes/Comments</label>
+      <textarea ng-model="newAccount.comments" md-maxlength="150" rows="3" md-select-on-focus></textarea>
+    </md-input-container>
+</md-content>

@@ -8,19 +8,15 @@
 </head>
 <body ng-app="ChequeYrslf">
 
-<!-- Navbar Position   -->
-<div ng-controller="navBarController as navBar">
-  {{navItems}}
-  <button ng-click="clickChange('accountLedger')">Account Ledger</button>
-  <button ng-click="clickChange('chequeWriter')">Cheque Writer</button>
-
+<!-- Navbar Position -->
+<div class="print-remove" ng-controller="navBarController as navBar" >
+  <nav ng-include="'./partials/navBar.html'"></nav> 
 
 <!-- Main Body Position -->
-  <div ng-if="navBar.clicked == 'appChoice'" ng-include="'./partials/appChoice.html'"></div>
-  <div ng-if="navBar.clicked == 'accountLedger'" ng-include="'./partials/accountLedger.html'"></div>
-  <div ng-if="navBar.clicked == 'chequeWriter'" ng-include="'./partials/chequeWriter.html'"></div>
+  <div ng-if="navBar.clicked === 'appChoice'" ng-include="'./partials/appChoice.html'"></div>
+  <div ng-if="navBar.clicked === 'accountLedger'" ng-include="'./partials/accountLedger.html'"></div>
+  <div ng-if="navBar.clicked === 'chequeWriter'" ng-include="'./partials/chequeWriter.html'"></div>
 </div>
-
 
   <!-- Framework Libraries -->
   <script type="text/javascript" src="./lib/bower_components/angular/angular.js"></script>
@@ -29,8 +25,6 @@
   <script type="text/javascript" src="./lib/bower_components/angular-aria/angular-aria.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-messages/angular-messages.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-material/angular-material.js"></script>
-  <!-- <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script> -->
-  <!-- <script type="text/javascript" src="./lib/bower_components/jquery-ui/jquery-ui.js"></script> -->
 
   <!-- My Code -->
   <script type="text/javascript" src="./app/app.js"></script>
