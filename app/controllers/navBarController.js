@@ -1,15 +1,14 @@
 // This simply assigns a navbar heading to a angular url
 
-app.controller("navBarController", function($scope){
+app.controller("navBarController", function($scope, navBarFactory){
 
-  var navBar = this;
-  
   $scope.navItems = "Basic Navbar";
 
-  navBar.clicked = 'appChoice';
-
-  $scope.clickChange = function(sentPage) {
-    navBar.clicked = sentPage;
-  }
+  //Watches for any click changes in the current "Main Page" view
+  $scope.$watch(function() {return navBarFactory.currentView}, function(newVal, oldVal) {
+    if (newVal !== undefined){
+      $scope.currentView = newVal;
+    }
+  }) ;
 
 });

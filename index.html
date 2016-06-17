@@ -9,13 +9,13 @@
 <body ng-app="ChequeYrslf">
 
 <!-- Navbar Position -->
-<div class="print-remove" ng-controller="navBarController as navBar" >
+<div class="print-remove" ng-controller="navBarController" >
   <nav ng-include="'./partials/navBar.html'"></nav> 
 
 <!-- Main Body Position -->
-  <div ng-if="navBar.clicked === 'appChoice'" ng-include="'./partials/appChoice.html'"></div>
-  <div ng-if="navBar.clicked === 'accountLedger'" ng-include="'./partials/accountLedger.html'"></div>
-  <div ng-if="navBar.clicked === 'chequeWriter'" ng-include="'./partials/chequeWriter.html'"></div>
+  <div ng-if="currentView === 'appChoice'" ng-include="'./partials/appChoice.html'"></div>
+  <div ng-if="currentView === 'accountLedger'" ng-include="'./partials/accountLedger.html'"></div>
+  <div ng-if="currentView === 'chequeWriter'" ng-include="'./partials/chequeWriter.html'"></div>
 </div>
 
   <!-- Framework Libraries -->
@@ -29,6 +29,7 @@
   <!-- My Code -->
   <script type="text/javascript" src="./app/app.js"></script>
   <script type="text/javascript" src="./app/factories/XHRFactory.js"></script>
+  <script type="text/javascript" src="./app/factories/navBarFactory.js"></script>
   <script type="text/javascript" src="./app/controllers/checkBuilderAJs.js"></script>
   <script type="text/javascript" src="./app/controllers/navBarController.js"></script>
   <script type="text/javascript" src="./app/controllers/appChoiceController.js"></script>
