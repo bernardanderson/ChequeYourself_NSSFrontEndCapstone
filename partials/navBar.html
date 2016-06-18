@@ -1,14 +1,21 @@
 <md-toolbar>
   <div class="md-toolbar-tools">
     <h2>
-      <span>{{navItems}}</span>
+    <span>{{navItems}}</span>
     </h2>
     <span flex></span>
-    <md-button class="md-raised" aria-label="Account Ledger" ng-click="clickChange('accountLedger')">
-      Account Ledger
-    </md-button>
-    <md-button class="md-raised" aria-label="Cheque Writer" ng-click="clickChange('chequeWriter')">
-      Cheque Writer
-    </md-button>
+    <div ng-repeat="button in navButtons">
+      <md-button class="md-raised" aria-label={{button.buttonLabel}} ng-click="clickedChoice(button.viewChange)">
+        {{button.buttonLabel}}
+      </md-button>
+    </div>
   </div>
 </md-toolbar>
+
+<!-- 
+  <section ng-show="newAccountPage" layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+    <h1>New Account</h1>
+    <md-button class="md-raised" md-primary ng-click="cancelSubmit()">Cancel</md-button>
+    <md-button class="md-raised" md-primary ng-click="addNewAccount(newAccount)">Submit Account Info</md-button>
+  </section>  -->
+

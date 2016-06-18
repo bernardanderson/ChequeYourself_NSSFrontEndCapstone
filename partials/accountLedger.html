@@ -1,16 +1,6 @@
 <section ng-controller="accountLedgerController">
 
-  <section ng-hide="newAccountPage" layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-    <h1>{{pageTitle}}</h1>
-    <md-button class="md-raised" md-primary ng-click="changeView('newAccount')">Add New Account</md-button>
-    <md-button class="md-raised" md-primary ng-click="changeView('displayLedger')">Display Ledger</md-button>
-  </section> 
-
-  <section ng-show="newAccountPage" layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-    <h1>New Account</h1>
-    <md-button class="md-raised" md-primary ng-click="cancelSubmit()">Cancel</md-button>
-    <md-button class="md-raised" md-primary ng-click="addNewAccount(newAccount)">Submit Account Info</md-button>
-  </section> 
+<h1>Account Ledger</h1>
 
   <div ng-if="ledgerChoice === 'newAccount'" ng-include="'./partials/newAccount.html'"></div>
   <div ng-if="ledgerChoice === 'displayLedger'" ng-include="'./partials/displayLedger.html'"></div>

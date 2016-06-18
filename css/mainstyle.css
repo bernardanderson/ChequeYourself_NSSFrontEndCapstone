@@ -4,6 +4,9 @@ body {
   margin: 0;
 }
 
+.inline {
+  display: inline-block;
+}
 
 .quick-border {
   border: 1px solid green;
