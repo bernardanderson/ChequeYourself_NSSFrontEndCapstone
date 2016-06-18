@@ -1,17 +1,46 @@
-<md-toolbar>
-  <div class="md-toolbar-tools">
-    <h2>
-    <span>{{navItems}}</span>
-    </h2>
+<md-content layout="column">
+  <md-toolbar class="md-toolbar-tools">
+    <h2><span>{{navItems}}</span></h2>
     <span flex></span>
-    <div ng-repeat="button in navButtons">
-      <md-button class="md-raised" aria-label={{button.buttonLabel}} ng-click="clickedChoice(button.viewChange)">
+      <md-button ng-repeat="button in navButtons" class="md-raised" aria-label={{button.buttonLabel}} ng-click="clickedChoice(button.viewChange)">
         {{button.buttonLabel}}
       </md-button>
-    </div>
-  </div>
-</md-toolbar>
+    <span flex="5"></span>
+  </md-toolbar>
+</md-content>
 
+<md-fab-speed-dial md-open="speedDial.isOpen" md-direction="down"
+                     class="md-scale md-fab-top-right">
+    <md-fab-trigger>
+      <md-button aria-label="menu" class="md-fab md-raised md-mini">
+        <md-icon md-svg-src="img/menu.svg"></md-icon>
+      </md-button>
+    </md-fab-trigger>
+    <md-fab-actions>
+      <md-button aria-label="Logout" class="md-fab md-raised md-mini">
+        <md-tooltip md-direction="left">
+          Logout
+        </md-tooltip>
+        <md-icon md-svg-src="img/logout.svg" aria-label="Logout"></md-icon>
+      </md-button>
+    </md-fab-actions>
+    <md-fab-actions>
+      <md-button aria-label="Ledger" class="md-fab md-raised md-mini" ng-click="clickedChoice('accountLedger')">
+        <md-tooltip md-direction="left">
+          Account Ledger
+        </md-tooltip>
+        <md-icon md-svg-src="img/ledger.svg" aria-label="Ledger"></md-icon>
+      </md-button>
+    </md-fab-actions>
+    <md-fab-actions>
+      <md-button aria-label="Writer" class="md-fab md-raised md-mini" ng-click="clickedChoice('chequeWriter')">
+        <md-tooltip md-direction="left">
+          Check Writer
+        </md-tooltip>
+        <md-icon md-svg-src="img/writer.svg" aria-label="Writer"></md-icon>
+      </md-button>
+    </md-fab-actions>
+  </md-fab-speed-dial>
 <!-- 
   <section ng-show="newAccountPage" layout="row" layout-sm="column" layout-align="center center" layout-wrap>
     <h1>New Account</h1>

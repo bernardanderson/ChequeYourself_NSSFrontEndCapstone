@@ -4,6 +4,10 @@ body {
   margin: 0;
 }
 
+md-fab-speed-dial {
+  margin-top: -13px;
+}
+
 .inline {
   display: inline-block;
 }

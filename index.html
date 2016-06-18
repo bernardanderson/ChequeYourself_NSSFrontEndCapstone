@@ -10,7 +10,7 @@
 
 <!-- Navbar Position -->
 <div class="print-remove" ng-controller="navBarController" >
-  <nav ng-include="'./partials/navBar.html'"></nav> 
+  <div layout="column" ng-include="'./partials/navBar.html'"></div> 
 
 <!-- Main Body Position -->
   <div ng-if="currentView === 'appChoice'" ng-include="'./partials/appChoice.html'"></div>
