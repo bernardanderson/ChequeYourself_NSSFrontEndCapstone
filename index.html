@@ -16,6 +16,7 @@
   <div ng-if="currentView === 'appChoice'" ng-include="'./partials/appChoice.html'"></div>
   <div ng-if="currentView === 'accountLedger'" ng-include="'./partials/accountLedger.html'"></div>
   <div ng-if="currentView === 'chequeWriter'" ng-include="'./partials/chequeWriter.html'"></div>
+  <div ng-if="currentView === 'addNewAccount'" ng-include="'./partials/newAccount.html'"></div>
 </div>
 
   <!-- Framework Libraries -->
@@ -32,6 +33,7 @@
   <script type="text/javascript" src="./app/factories/navBarFactory.js"></script>
   <script type="text/javascript" src="./app/controllers/checkBuilderAJs.js"></script>
   <script type="text/javascript" src="./app/controllers/navBarController.js"></script>
+  <script type="text/javascript" src="./app/controllers/newAccountController.js"></script>
   <script type="text/javascript" src="./app/controllers/appChoiceController.js"></script>
   <script type="text/javascript" src="./app/controllers/chequeWriterController.js"></script>
   <script type="text/javascript" src="./app/controllers/accountLedgerController.js"></script>

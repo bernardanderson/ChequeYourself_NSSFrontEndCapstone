@@ -1,11 +1,13 @@
-app.controller("accountLedgerController", function($scope){
+app.controller("accountLedgerController", function($scope, navBarFactory){
 
   $scope.pageTitle = "Account Ledger";
 
-  // For the choice of new account or show ledger
-  $scope.ledgerChoice = "showLedger";
-
-  $scope.newAccountPage = false;
+  navBarFactory.setNavButtons([
+    {
+      buttonLabel: "Add New Account",
+      viewChange: "addNewAccount"
+    }
+  ]);
 
   $scope.newAccount = {
     nickName: null,
@@ -25,12 +27,6 @@ app.controller("accountLedgerController", function($scope){
   'WY').split(' ').map(function(state) {
     return {abbrev: state};
   });
-
-  // Changes the view on the Account Ledger Page
-  $scope.changeView = (sentChoice) => {
-    $scope.ledgerChoice = sentChoice;
-    $scope.newAccountPage = true;
-  }
 
   $scope.cancelSubmit = () => {
     $scope.newAccountPage = false;

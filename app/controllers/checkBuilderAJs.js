@@ -14,7 +14,4 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory){
     console.log($scope.checkEntryElementData)
   });
 
-
-
-
 });

@@ -18,6 +18,8 @@ app.controller("navBarController", function($scope, navBarFactory){
   $scope.$watch(function() {return navBarFactory.currentView}, function(newVal, oldVal) {
     if (newVal !== undefined){
       $scope.currentView = newVal;
+      console.log($scope.currentView)
+      
     }
   }) ;
 
