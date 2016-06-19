@@ -8,6 +8,10 @@ md-fab-speed-dial {
   margin-top: -13px;
 }
 
+.thinner-btn {
+  height: 15px;
+}
+
 .inline {
   display: inline-block;
 }
