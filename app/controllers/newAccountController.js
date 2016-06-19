@@ -16,19 +16,14 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
     accountType: null,
     routingNumber: null,
     accountNumber: null,
-    comments: null
+    comments: null,
+    UUID: null
   }
 
   // Allows the selection of states from an option box
   $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY').split(' ').map(function(state) {
     return {abbrev: state};
   });
-
-  // Cancels the submission of a new account
-  $scope.cancelSubmit = () => {
-    $scope.newAccountPage = false;
-    $scope.ledgerChoice = "showLedger";
-  }
 
   // For saving a new account during the new account creation
   $scope.saveAccountInfo = (sentNewAccount) => {
@@ -41,7 +36,8 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
       accountType: sentNewAccount.accountType,
       routingNumber: sentNewAccount.routingNumber,
       accountNumber: sentNewAccount.accountNumber,
-      comments: sentNewAccount.comments
+      comments: sentNewAccount.comments,
+      UUID: localDataStorageFactory.generateUniqueId()
     }
 
     localDataStorageFactory.addNewAccount($scope.newAccount);

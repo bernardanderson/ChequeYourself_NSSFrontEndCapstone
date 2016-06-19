@@ -2,20 +2,31 @@
 
 app.controller("navBarController", function($scope, navBarFactory, localDataStorageFactory){
 
-  $scope.navItems = "Basic Navbar";
+  $scope.navTitle = "Basic Navbar";
 
+  // Var which holds the current view's nav buttons
   $scope.navButtons = navBarFactory.navButtons;
 
+  // Local holder for the users accounts
   $scope.accountsArray = [];
 
+  // Var for if the speedDial is open by default
   $scope.speedDial = {
     isOpen: false,
   }
 
+  // Var for whether the user has at least one account on file
   $scope.atLeastOneAccount = false;
 
+  // This is exclusively for the initial appChoice view page
   $scope.clickedChoice = function(sentNewView) {
     navBarFactory.setCurrentView(sentNewView);
+  }
+
+  // When an account is selected in the navBar on the displayLedger Page, this executes
+  $scope.sendAccount = function(sentSelectedAccount) {
+    console.log("Start here, and have a fake account data pulled into the ledger and displayed")
+    console.log(sentSelectedAccount);
   }
 
   //Watches for any click changes in the current "Main Page" view
