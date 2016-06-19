@@ -1,13 +1,26 @@
-app.controller("accountLedgerController", function($scope, navBarFactory){
+app.controller("accountLedgerController", function($scope, navBarFactory, localDataStorageFactory){
 
   $scope.pageTitle = "Account Ledger";
 
-  navBarFactory.setNavButtons([
-    {
-      buttonLabel: "Add New Account",
-      viewChange: "addNewAccount"
-    }
-  ]);
+  if (localDataStorageFactory.currentAccounts. length === 0) {
+    navBarFactory.setNavButtons([
+      {
+        buttonLabel: "Add New Account",
+        viewChange: "addNewAccount"
+      }
+    ]);
+  } else {
+    navBarFactory.setNavButtons([
+      {
+        buttonLabel: "Edit Account",
+        viewChange: "addNewAccount"
+      },
+      {
+        buttonLabel: "Add New Account",
+        viewChange: "addNewAccount"
+      }
+    ]);
+  }
 
   $scope.newAccount = {
     nickName: null,

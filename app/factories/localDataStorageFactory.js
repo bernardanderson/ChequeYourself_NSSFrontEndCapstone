@@ -5,9 +5,7 @@ app.factory("localDataStorageFactory", function(){
     currentAccounts: [],
 
     addNewAccount: function(sentAccountInfo) {
-      for (var element in sentAccountInfo) {
-        this.currentAccounts.push(sentAccountInfo[element]);
-      };
+      this.currentAccounts.push(sentAccountInfo);
     }
   }
 
