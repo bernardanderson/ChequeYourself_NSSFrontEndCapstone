@@ -1,12 +1,11 @@
 <div>
   <md-content md-theme="special-input" layout-gt-sm="row" layout-align="center" layout-padding class="new-transaction-input">
-  <h4>New Ledger Item</h4>
-  <span flex="5"></span>
+  <h4>New Item</h4>
   <md-input-container flex="5">
     <label class="sm-font">Check #</label>
     <input ng-model="newItem.checkNum">
   </md-input-container>
-  <md-input-container flex="5">
+  <md-input-container flex="10">
     <label class="sm-font">Date</label>
     <input ng-model="newItem.checkDate">
   </md-input-container>
@@ -34,7 +33,34 @@
 </div>
 
 <div>
-  <p ng-repeat="lineItem in accountItems">{{lineItem}}</p>
+  <md-content class="md-padding" layout="column">
+    <md-card layout="column" flex="90">
+      <md-card-title>
+        <md-card-title-text layout-align="start center" >
+          <span class="md-subhead">Account Ledger</span>
+        </md-card-title-text>
+      </md-card-title>
+      <div layout="row" class="ledger-div-format">
+        <span flex></span>
+        <div flex="8">Check #</div>
+        <div flex="10">Date</div>
+        <div flex="30">Transaction</div>
+        <div flex="10">Category</div>
+        <div flex="10">Type</div>
+        <div flex="10">Check Amount</div>
+        <div flex="20">Running Total</div>
+      </div>
+        <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in accountItems">
+          <span flex></span>
+          <div flex="8" >{{lineItem.checkNum}}</div>
+          <div flex="10">{{lineItem.checkDate}}</div>
+          <div flex="30">{{lineItem.transaction}}</div>
+          <div flex="10">{{lineItem.category}}</div>
+          <div flex="10">{{lineItem.type}}</div>
+          <div flex="10">{{lineItem.checkAmount}}</div>
+          <div flex="20">$1,000,000</div>
+        </div>
+    </md-card>
+  </md-content>
 </div>
   
-
