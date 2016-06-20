@@ -4,8 +4,20 @@ app.factory("localDataStorageFactory", function(){
 
     currentAccounts: [],
 
+    selectedAccount: [],
+
+    // Adds the account information, either from the new Account entry for from XHR pull
+    //  to the currentAccounts array for access
     addNewAccount: function(sentAccountInfo) {
-      this.currentAccounts.push(sentAccountInfo);
+      for (var singleAccount in sentAccountInfo) {
+        this.currentAccounts.push(sentAccountInfo[singleAccount]);
+      }
+    },
+
+    // From the navBar dropdown, adds the selected account for manipulation
+    addSelectedAccount: function(sentSelectedAccount) {
+      this.selectedAccount.splice(0);
+      this.selectedAccount.push(sentSelectedAccount);
     },
 
     // This generates a complex unique ID for various purposes

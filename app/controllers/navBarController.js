@@ -24,9 +24,10 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
   }
 
   // When an account is selected in the navBar on the displayLedger Page, this executes
+  //  Updates the localDataStorageFactory variable selectedAccount
   $scope.sendAccount = function(sentSelectedAccount) {
-    console.log("Start here, and have a fake account data pulled into the ledger and displayed")
     console.log(sentSelectedAccount);
+    localDataStorageFactory.addSelectedAccount(sentSelectedAccount);
   }
 
   //Watches for any click changes in the current "Main Page" view

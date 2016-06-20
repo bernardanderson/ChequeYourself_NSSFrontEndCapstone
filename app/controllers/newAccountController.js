@@ -17,7 +17,7 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
     routingNumber: null,
     accountNumber: null,
     comments: null,
-    UUID: null
+    accountID: null
   }
 
   // Allows the selection of states from an option box
@@ -37,10 +37,10 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
       routingNumber: sentNewAccount.routingNumber,
       accountNumber: sentNewAccount.accountNumber,
       comments: sentNewAccount.comments,
-      UUID: localDataStorageFactory.generateUniqueId()
+      accountID: localDataStorageFactory.generateUniqueId()
     }
 
-    localDataStorageFactory.addNewAccount($scope.newAccount);
+    localDataStorageFactory.addNewAccount({"newAccount": $scope.newAccount});
     console.log("Result of newAccount in localDataStorage: ", localDataStorageFactory.currentAccounts);
     navBarFactory.setCurrentView('accountLedger');
   }

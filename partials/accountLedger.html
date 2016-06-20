@@ -1,6 +1,38 @@
-<h1>Account Ledger</h1>
+<div>
+  <md-content md-theme="special-input" layout-gt-sm="row" layout-align="center" layout-padding class="new-transaction-input">
+  <h4>New Ledger Item</h4>
+  <span flex="5"></span>
+  <md-input-container flex="5">
+    <label class="sm-font">Check #</label>
+    <input ng-model="newItem.checkNum">
+  </md-input-container>
+  <md-input-container flex="5">
+    <label class="sm-font">Date</label>
+    <input ng-model="newItem.checkDate">
+  </md-input-container>
+  <md-input-container flex="20">
+    <label class="sm-font">Transaction Description</label>
+    <input ng-model="newItem.transaction">
+  </md-input-container>
+  <md-input-container flex="10">
+    <label class="sm-font">Category (Optional)</label>
+    <input ng-model="newItem.category">
+  </md-input-container>
+  <md-input-container>
+    <label class="sm-font" flex="5">Amount</label>
+    <input ng-model="newItem.checkAmount">
+  </md-input-container>
+  <md-input-container>
+    <label>Type</label>
+    <md-select ng-model="newItem.type">
+      <md-option value="Withdrawl">Withdrawl</md-option>
+      <md-option value="Deposit">Deposit</md-option>
+    </md-select>
+  </md-input-container>
+  <md-button class="md-raised md-warn add-ledger-btn" ng-disabled="disableNewLedgerAddition" ng-click="addNewLineItem(newItem)">Add to Ledger</md-button>
+  </md-content>
+</div>
 
 <div ng-repeat="lineItem in AccountItems">
   
-</div>
 

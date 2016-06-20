@@ -12,6 +12,22 @@ md-fab-speed-dial {
   height: 15px;
 }
 
+.add-ledger-btn {
+  padding: 0 8px 7px 8px;
+  margin-top: 18px;
+}
+
+.new-transaction-input {
+  margin-top: 5px;
+  height: 65px;
+  overflow: hidden;
+}
+
+.sm-font {
+  font-size: 10pt;
+}
+
+
 .inline {
   display: inline-block;
 }

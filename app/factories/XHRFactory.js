@@ -6,7 +6,11 @@ app.factory("XHRFactory", function($http){
     //  promise data as X.data
     pullCheckElements: function() {
       return $http.get(`json/elements.json`)
-    }
+    },
 
+    // Pulls the Account information for the user
+    pullUserAccounts: function() {
+      return $http.get(`json/basicData.json`)
+    }
   }
 });
