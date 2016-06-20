@@ -4,13 +4,9 @@ app.factory("XHRFactory", function($http){
 
     // Pulls the Check Data Entry Fields from the json file and returns the completed 
     //  promise data as X.data
-    pullCheckElements: function() {
-      return $http.get(`json/elements.json`)
-    },
-
-    // Pulls the Account information for the user
-    pullUserAccounts: function() {
-      return $http.get(`json/basicData.json`)
+    pullXHRData: function(sentLocation) {
+      return $http.get(sentLocation)
     }
   }
+  
 });

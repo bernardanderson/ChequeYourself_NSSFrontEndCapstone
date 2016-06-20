@@ -1,7 +1,8 @@
 // The splash page buttons
 app.controller("appChoiceController", function($scope, navBarFactory, XHRFactory, localDataStorageFactory){
 
-  XHRFactory.pullUserAccounts().then( response => localDataStorageFactory.addNewAccount(response.data.accounts));
+  // Pulls the account info and sents it to be stored locally
+  XHRFactory.pullXHRData("json/basicData.json").then( response => localDataStorageFactory.addNewAccount(response.data.accounts));
 
   $scope.clickedChoice = function(sentChoice) {
     navBarFactory.setCurrentView(sentChoice);

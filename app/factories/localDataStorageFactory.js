@@ -1,10 +1,12 @@
-app.factory("localDataStorageFactory", function(){
+app.factory("localDataStorageFactory", function(XHRFactory){
 
   return {
 
     currentAccounts: [],
 
     selectedAccount: [],
+
+    selectedAccountLedgerItems: [],
 
     // Adds the account information, either from the new Account entry for from XHR pull
     //  to the currentAccounts array for access
@@ -18,6 +20,23 @@ app.factory("localDataStorageFactory", function(){
     addSelectedAccount: function(sentSelectedAccount) {
       this.selectedAccount.splice(0);
       this.selectedAccount.push(sentSelectedAccount);
+      this.addSelectedAccountLedgerItems(sentSelectedAccount.accountID)
+    },
+
+    // After an account is selected, this pulls the ledger items and adds the
+    //  correct ones to the selectedAccountLedgerItems array
+    addSelectedAccountLedgerItems: function(sentAccountID) {
+
+      this.selectedAccountLedgerItems.splice(0);
+
+      XHRFactory.pullXHRData("json/basicData.json").then( response => {
+        let lineItemObj = response.data.lineItems;
+        for (var item in lineItemObj) {
+          if (lineItemObj[item].accountID === sentAccountID) {
+            this.selectedAccountLedgerItems.push(lineItemObj[item]);
+          }
+        }
+      })
     },
 
     // This generates a complex unique ID for various purposes

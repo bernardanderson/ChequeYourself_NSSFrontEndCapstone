@@ -10,7 +10,7 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory){
   }
 
   // Pulls the check elements from the local json and populates the check fields
-  XHRFactory.pullCheckElements().then(function(response) {
+  XHRFactory.pullXHRData("json/elements.json").then(function(response) {
     $scope.checkEntryElementData = response.data.domElements;
     console.log($scope.checkEntryElementData)
   });

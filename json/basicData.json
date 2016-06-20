@@ -29,7 +29,7 @@
     "item0": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Fun",
-      "checkAmount": "$100.00",
+      "checkAmount": "$1.00",
       "checkDate": "05/16",
       "checkNum": "1023",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -39,7 +39,7 @@
     "item1": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$2.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -49,7 +49,7 @@
     "item2": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$3.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -59,17 +59,17 @@
     "item3": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$4.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
       "transaction": "Cash",
-      "type": "Withdrawl"
+      "type": "Deposit"
     },
     "item4": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$5.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -79,7 +79,7 @@
     "item5": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$6.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -89,17 +89,17 @@
     "item6": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$7.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
       "transaction": "Cash",
-      "type": "Withdrawl"
+      "type": "Deposit"
     },
     "item7": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$8.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -109,7 +109,7 @@
     "item8": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$9.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -119,7 +119,7 @@
     "item9": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$10.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -129,17 +129,17 @@
     "item10": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$11.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
       "transaction": "Cash",
-      "type": "Withdrawl"
+      "type": "Deposit"
     },
     "item11": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$12.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -149,12 +149,12 @@
     "item12": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$150.00",
+      "checkAmount": "$13.00",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
       "transaction": "Cash",
-      "type": "Withdrawl"
+      "type": "Deposit"
     }
   }
 }

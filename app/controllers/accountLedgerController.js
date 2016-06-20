@@ -2,6 +2,8 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   $scope.pageTitle = "Account Ledger";
 
+  $scope.accountItems = localDataStorageFactory.selectedAccountLedgerItems;
+
   if (localDataStorageFactory.currentAccounts.length === 0) {
     navBarFactory.setNavButtons(
       [{
@@ -37,6 +39,5 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
       $scope.disableNewLedgerAddition = true;
     }
   });
-
 
 });

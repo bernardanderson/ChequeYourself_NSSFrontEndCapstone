@@ -26,7 +26,6 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
   // When an account is selected in the navBar on the displayLedger Page, this executes
   //  Updates the localDataStorageFactory variable selectedAccount
   $scope.sendAccount = function(sentSelectedAccount) {
-    console.log(sentSelectedAccount);
     localDataStorageFactory.addSelectedAccount(sentSelectedAccount);
   }
 
