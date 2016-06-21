@@ -56,6 +56,8 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     return `$${$scope.selectedAccountStartingAmount.toFixed(2)}`;
   }
 
+  // When the "Add to Ledger" button is clicked to add a new line item to the ledger, this is used to add a 
+  //  single item to the localDataStorageFactory selectedAccountLedgerItems array.
   $scope.addNewLineItem = function() {
     
     let sentLineItem = $scope.newSingleLineItem;
@@ -66,7 +68,7 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     sentLineItem.checkAmount = localDataStorageFactory.formatNumbersToCurrencyString(sentLineItem.checkAmount);
     localDataStorageFactory.addNewAccountLedgerItem(sentLineItem);
 
-    $scope.newSingleLineItem = {};
+    $scope.newSingleLineItem = {}; // Clears the newSingleLineItem inputs on the DOM
 
   }
 

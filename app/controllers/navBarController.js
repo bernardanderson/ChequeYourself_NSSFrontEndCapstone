@@ -20,13 +20,16 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
 
   // This is exclusively for the initial appChoice view page
   $scope.clickedChoice = function(sentNewView) {
+    localDataStorageFactory.isEditClick = false;
     navBarFactory.setCurrentView(sentNewView);
   }
 
   // When an account is selected in the navBar on the displayLedger Page, this executes
   //  Updates the localDataStorageFactory variable selectedAccount
   $scope.sendAccount = function(sentSelectedAccount) {
-    localDataStorageFactory.addSelectedAccount(sentSelectedAccount);
+      if (sentSelectedAccount !== undefined) {
+      localDataStorageFactory.addSelectedAccount(sentSelectedAccount);
+    }
   }
 
   //Watches for any click changes in the current "Main Page" view

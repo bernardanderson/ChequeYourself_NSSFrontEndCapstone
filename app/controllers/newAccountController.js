@@ -2,24 +2,31 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
 
   navBarFactory.setNavButtons([
     {
-      buttonLabel: "Cancel New Account",
+      buttonLabel: "Cancel Submission",
       viewChange: "accountLedger"
     }
   ]);
 
-  $scope.newAccount = {
-    nickName: null,
-    bankName: null,
-    bankStreet: null,
-    bankState: null,
-    bankZip: null,
-    accountType: null,
-    routingNumber: null,
-    accountNumber: null,
-    comments: null,
-    startingAmount: null,
-    accountID: null
+  if (localDataStorageFactory.selectedAccount.length > 0 && localDataStorageFactory.isEditClick === true) {
+    $scope.newAccount = localDataStorageFactory.selectedAccount[0];
+  } else {
+
+    $scope.newAccount = {
+      nickName: null,
+      bankName: null,
+      bankStreet: null,
+      bankState: null,
+      bankZip: null,
+      accountType: null,
+      routingNumber: null,
+      accountNumber: null,
+      comments: null,
+      startingAmount: null,
+      accountID: null
+
+    };
   }
+
 
   // Allows the selection of states from an option box
   $scope.states = ('AL AK AZ AR CA CO CT DE FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY').split(' ').map(function(state) {
@@ -43,6 +50,7 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
     }
 
     localDataStorageFactory.addNewAccount({"newAccount": $scope.newAccount});
+    localDataStorageFactory.isEditClick = false;
     console.log("Result of newAccount in localDataStorage: ", localDataStorageFactory.currentAccounts);
     navBarFactory.setCurrentView('accountLedger');
   }

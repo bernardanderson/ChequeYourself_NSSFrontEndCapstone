@@ -8,6 +8,8 @@ app.factory("localDataStorageFactory", function(XHRFactory){
 
     selectedAccountLedgerItems: [],
 
+    isEditClicked: false,
+
     // Adds the account information, either from the new Account entry for from XHR pull
     //  to the currentAccounts array for access
     addNewAccount: function(sentAccountInfo) {
