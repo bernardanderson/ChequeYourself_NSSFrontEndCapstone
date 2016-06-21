@@ -17,6 +17,7 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
     routingNumber: null,
     accountNumber: null,
     comments: null,
+    startingAmount: null,
     accountID: null
   }
 
@@ -37,6 +38,7 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
       routingNumber: sentNewAccount.routingNumber,
       accountNumber: sentNewAccount.accountNumber,
       comments: sentNewAccount.comments,
+      startingAmount: sentNewAccount.startingAmount,
       accountID: localDataStorageFactory.generateUniqueId()
     }
 

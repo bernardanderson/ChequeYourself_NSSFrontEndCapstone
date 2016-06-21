@@ -24,6 +24,17 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     );
   }
 
+  // Gets the starting account amount for displaying on the Account Ledger Page
+  $scope.currentlySelectedAccount = function() {
+
+    let selectedAccountData = localDataStorageFactory.selectedAccount;
+    if (selectedAccountData.length > 0) {
+      return `Starting $${selectedAccountData[0].startingAmount}`;
+    } else {
+      return "No Account Selected";
+    }
+  }
+
   $scope.addNewLineItem = function(sentLineItem) {
     let tempLineItemID = localDataStorageFactory.generateUniqueId()
     sentLineItem.lineItemID = tempLineItemID;

@@ -8,6 +8,15 @@ md-fab-speed-dial {
   margin-top: -13px;
 }
 
+.red-bold {
+  color: red;
+  font-weight: bold;
+}
+
+.black-bold {
+  font-weight: bold;
+}
+
 .navbar-overflow {
   overflow: hidden;
 }

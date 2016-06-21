@@ -21,7 +21,7 @@
     <label class="sm-font" flex="5">Amount</label>
     <input ng-model="newItem.checkAmount">
   </md-input-container>
-  <md-input-container>
+  <md-input-container flex="10">
     <label>Type</label>
     <md-select ng-model="newItem.type">
       <md-option value="Withdrawl">Withdrawl</md-option>
@@ -41,24 +41,26 @@
         </md-card-title-text>
       </md-card-title>
       <div layout="row" class="ledger-div-format">
-        <span flex></span>
-        <div flex="8">Check #</div>
+        <span flex="5"></span>
+        <div flex="2"><img style="width: 25px;" src="img/writer.svg"> </div>
+        <div flex="8">Check</div>
         <div flex="10">Date</div>
-        <div flex="30">Transaction</div>
+        <div flex="20">Transaction</div>
         <div flex="10">Category</div>
         <div flex="10">Type</div>
         <div flex="10">Check Amount</div>
-        <div flex="20">Running Total</div>
+        <div flex="20">Running Total <br>{{currentlySelectedAccount()}}</div>
       </div>
         <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in accountItems">
-          <span flex></span>
+        <span flex="5"></span>
+          <md-checkbox ng-model="checked" aria-label="Print2Check"></md-checkbox>
           <div flex="8" >{{lineItem.checkNum}}</div>
           <div flex="10">{{lineItem.checkDate}}</div>
-          <div flex="30">{{lineItem.transaction}}</div>
+          <div flex="20">{{lineItem.transaction}}</div>
           <div flex="10">{{lineItem.category}}</div>
           <div flex="10">{{lineItem.type}}</div>
-          <div flex="10">{{lineItem.checkAmount}}</div>
-          <div flex="20">$1,000,000</div>
+          <div flex="10" ng-class="'{{lineItem.type}}' === 'Withdrawl' ? 'red-bold' : 'black-bold'">{{lineItem.checkAmount}}</div>
+          <div flex="20"></div>
         </div>
     </md-card>
   </md-content>

@@ -10,7 +10,8 @@
       "bankZip": "55119",
       "comments": "This is a bogus account",
       "nickName": "Account 0",
-      "routingNumber": "004453453"
+      "routingNumber": "004453453",
+      "startingAmount": 10000
     },
     "account1": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
@@ -22,7 +23,8 @@
       "bankZip": "37221",
       "comments": "This is a bogus account",
       "nickName": "Account 1",
-      "routingNumber": "004453453"
+      "routingNumber": "004453453",
+      "startingAmount": 2000
     }
   },
   "lineItems": {
