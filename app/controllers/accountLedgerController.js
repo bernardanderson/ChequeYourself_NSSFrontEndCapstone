@@ -4,6 +4,8 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   $scope.accountItems = localDataStorageFactory.selectedAccountLedgerItems;
 
+  $scope.newSingleLineItem = {};
+
   $scope.selectedAccountCurrentAmount = 0;
 
   if (localDataStorageFactory.currentAccounts.length === 0) {
@@ -34,10 +36,14 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
       $scope.selectedAccountStartingAmount = selectedAccountData[0].startingAmount;
       return `Starting $${selectedAccountData[0].startingAmount}`;
     } else {
-      return "No Account Selected";
+      return "(No Account Selected)";
     }
   }
 
+  // Calculates the current line item total as the ledger ng-repeat is displaying the line items
+  //  It strips the "string" checkValue to numbers (keeping the decimal) and converts to string to a floating point
+  //  value.  It does the math based on whether it's a Deposit or Withdrawl and then returns the value as a string
+  //  to two decimal places. 
   $scope.calcLineItemTotal = function(sentCurrentLineItem) {
 
     let currentLineItemAmount = parseFloat(sentCurrentLineItem.checkAmount.replace(/[^\d.]/g, ''));
@@ -50,10 +56,18 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     return `$${$scope.selectedAccountStartingAmount.toFixed(2)}`;
   }
 
-  $scope.addNewLineItem = function(sentLineItem) {
-    let tempLineItemID = localDataStorageFactory.generateUniqueId()
+  $scope.addNewLineItem = function() {
+    
+    let sentLineItem = $scope.newSingleLineItem;
+    let tempLineItemID = localDataStorageFactory.generateUniqueId();
     sentLineItem.lineItemID = tempLineItemID;
-    console.log(sentLineItem);
+    
+    sentLineItem.accountID = localDataStorageFactory.selectedAccount[0].accountID
+    sentLineItem.checkAmount = localDataStorageFactory.formatNumbersToCurrencyString(sentLineItem.checkAmount);
+    localDataStorageFactory.addNewAccountLedgerItem(sentLineItem);
+
+    $scope.newSingleLineItem = {};
+
   }
 
   //Watches for selection in the navBar selected account list

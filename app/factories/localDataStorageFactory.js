@@ -16,11 +16,21 @@ app.factory("localDataStorageFactory", function(XHRFactory){
       }
     },
 
+    formatNumbersToCurrencyString: function(sentNumber) {
+      let tempNumber = parseFloat(sentNumber.replace(/[^\d.]/g, ''));
+      return `$${tempNumber.toFixed(2)}`;
+    },
+
     // From the navBar dropdown, adds the selected account for manipulation
     addSelectedAccount: function(sentSelectedAccount) {
       this.selectedAccount.splice(0);
       this.selectedAccount.push(sentSelectedAccount);
       this.addSelectedAccountLedgerItems(sentSelectedAccount.accountID)
+    },
+
+    // Adds a single ledger item to the currently selected ledger array
+    addNewAccountLedgerItem: function(sentSingleLedgerItem) {
+      this.selectedAccountLedgerItems.push(sentSingleLedgerItem);
     },
 
     // After an account is selected, this pulls the ledger items and adds the
