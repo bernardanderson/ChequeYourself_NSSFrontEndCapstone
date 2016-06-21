@@ -8,6 +8,9 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   $scope.selectedAccountCurrentAmount = 0;
 
+  // Resets the editting mode to false when returning to the Account Ledger
+  localDataStorageFactory.isEditClick = false;
+
   if (localDataStorageFactory.currentAccounts.length === 0) {
     navBarFactory.setNavButtons(
       [{
@@ -19,7 +22,8 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     navBarFactory.setNavButtons(
       [{
         buttonLabel: "Edit Account",
-        viewChange: "addNewAccount"
+        viewChange: "addNewAccount",
+        extraParameters: "Edit"
       },
       {
         buttonLabel: "Add New Account",

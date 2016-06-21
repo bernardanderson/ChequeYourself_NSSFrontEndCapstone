@@ -19,8 +19,12 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
   $scope.atLeastOneAccount = false;
 
   // This is exclusively for the initial appChoice view page
-  $scope.clickedChoice = function(sentNewView) {
-    localDataStorageFactory.isEditClick = false;
+  $scope.clickedChoice = function(sentNewView, sentParameters) {
+
+    console.log("Clicked Choice: ", sentNewView, sentParameters)
+    if (sentParameters === "Edit") {
+      localDataStorageFactory.isEditClick = true;
+    }
     navBarFactory.setCurrentView(sentNewView);
   }
 

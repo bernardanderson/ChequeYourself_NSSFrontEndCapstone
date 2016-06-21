@@ -7,7 +7,7 @@
         <md-option ng-repeat="singleAccount in accountsArray" ng-value="singleAccount">{{singleAccount.nickName}}</md-option>
       </md-select>
     </md-input-container>
-    <md-button ng-repeat="button in navButtons" class="md-raised" aria-label={{button.buttonLabel}} ng-click="clickedChoice(button.viewChange)">
+    <md-button ng-repeat="button in navButtons" class="md-raised" aria-label={{button.buttonLabel}} ng-click="clickedChoice(button.viewChange, button.extraParameters)">
       {{button.buttonLabel}}
     </md-button>
     <span flex="5"></span>

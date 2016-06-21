@@ -18,6 +18,15 @@ app.factory("localDataStorageFactory", function(XHRFactory){
       }
     },
 
+    // Updates an edited Account
+    updateAccount: function(sentAccountInfo) {
+      for (var element in this.currentAccounts) {
+        if (this.currentAccounts[element].accountID === sentAccountInfo.accountID) {
+          this.currentAccounts[element] = sentAccountInfo;
+        }
+      }
+    },
+
     formatNumbersToCurrencyString: function(sentNumber) {
       let tempNumber = parseFloat(sentNumber.replace(/[^\d.]/g, ''));
       return `$${tempNumber.toFixed(2)}`;

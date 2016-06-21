@@ -35,6 +35,7 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
 
   // For saving a new account during the new account creation
   $scope.saveAccountInfo = (sentNewAccount) => {
+
     $scope.newAccount = {
       nickName: sentNewAccount.nickName,
       bankName: sentNewAccount.bankName,
@@ -45,11 +46,19 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
       routingNumber: sentNewAccount.routingNumber,
       accountNumber: sentNewAccount.accountNumber,
       comments: sentNewAccount.comments,
-      startingAmount: sentNewAccount.startingAmount,
-      accountID: localDataStorageFactory.generateUniqueId()
+      startingAmount: sentNewAccount.startingAmount
     }
 
-    localDataStorageFactory.addNewAccount({"newAccount": $scope.newAccount});
+    // Checks to see if the user is editing an account or adding a new account.  If editing, it keeps the accountID
+    //  the same so the ledger items aren't lost
+    if (localDataStorageFactory.isEditClick === false) {
+      $scope.newAccount.accountID = localDataStorageFactory.generateUniqueId();
+      localDataStorageFactory.addNewAccount({"newAccount": $scope.newAccount});
+    } else {
+      $scope.newAccount.accountID = sentNewAccount.accountID;
+      localDataStorageFactory.updateAccount($scope.newAccount);
+    }
+
     localDataStorageFactory.isEditClick = false;
     console.log("Result of newAccount in localDataStorage: ", localDataStorageFactory.currentAccounts);
     navBarFactory.setCurrentView('accountLedger');
