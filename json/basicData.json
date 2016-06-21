@@ -31,7 +31,7 @@
     "item0": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Fun",
-      "checkAmount": "$1.00",
+      "checkAmount": "$1.53",
       "checkDate": "05/16",
       "checkNum": "1023",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -41,7 +41,7 @@
     "item1": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$2.00",
+      "checkAmount": "$2.34",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -51,7 +51,7 @@
     "item2": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$3.00",
+      "checkAmount": "$3.33",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -61,7 +61,7 @@
     "item3": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$4.00",
+      "checkAmount": "$4.85",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -71,7 +71,7 @@
     "item4": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$5.00",
+      "checkAmount": "$5.43",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -81,7 +81,7 @@
     "item5": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$6.00",
+      "checkAmount": "$6.92",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -91,7 +91,7 @@
     "item6": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$7.00",
+      "checkAmount": "$7.12",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -101,7 +101,7 @@
     "item7": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$8.00",
+      "checkAmount": "$8.64",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -111,7 +111,7 @@
     "item8": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$9.00",
+      "checkAmount": "$9.93",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -121,7 +121,7 @@
     "item9": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$10.00",
+      "checkAmount": "$10.92",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -131,7 +131,7 @@
     "item10": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$11.00",
+      "checkAmount": "$11.11",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -141,7 +141,7 @@
     "item11": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$12.00",
+      "checkAmount": "$12.53",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
@@ -151,7 +151,7 @@
     "item12": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
       "category": "Bill",
-      "checkAmount": "$13.00",
+      "checkAmount": "$13.25",
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",

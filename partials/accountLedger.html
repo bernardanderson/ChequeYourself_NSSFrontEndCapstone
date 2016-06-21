@@ -60,7 +60,7 @@
           <div flex="10">{{lineItem.category}}</div>
           <div flex="10">{{lineItem.type}}</div>
           <div flex="10" ng-class="'{{lineItem.type}}' === 'Withdrawl' ? 'red-bold' : 'black-bold'">{{lineItem.checkAmount}}</div>
-          <div flex="20"></div>
+          <div flex="20">{{calcLineItemTotal(lineItem)}}</div>
         </div>
     </md-card>
   </md-content>

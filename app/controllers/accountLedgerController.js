@@ -4,6 +4,8 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   $scope.accountItems = localDataStorageFactory.selectedAccountLedgerItems;
 
+  $scope.selectedAccountCurrentAmount = 0;
+
   if (localDataStorageFactory.currentAccounts.length === 0) {
     navBarFactory.setNavButtons(
       [{
@@ -29,10 +31,23 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
     let selectedAccountData = localDataStorageFactory.selectedAccount;
     if (selectedAccountData.length > 0) {
+      $scope.selectedAccountStartingAmount = selectedAccountData[0].startingAmount;
       return `Starting $${selectedAccountData[0].startingAmount}`;
     } else {
       return "No Account Selected";
     }
+  }
+
+  $scope.calcLineItemTotal = function(sentCurrentLineItem) {
+
+    let currentLineItemAmount = parseFloat(sentCurrentLineItem.checkAmount.replace(/[^\d.]/g, ''));
+
+    if (sentCurrentLineItem.type === "Withdrawl") {
+      $scope.selectedAccountStartingAmount = $scope.selectedAccountStartingAmount - currentLineItemAmount;
+    } else {
+      $scope.selectedAccountStartingAmount = $scope.selectedAccountStartingAmount + currentLineItemAmount;
+    }
+    return `$${$scope.selectedAccountStartingAmount.toFixed(2)}`;
   }
 
   $scope.addNewLineItem = function(sentLineItem) {
