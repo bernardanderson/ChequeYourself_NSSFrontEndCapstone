@@ -1,0 +1,45 @@
+<md-content class="navbar-overflow" layout="column">
+  <md-toolbar class="md-toolbar-tools">
+    <h2><span>{{navTitle}}</span></h2>
+    <span flex></span>
+    <md-input-container style="color: black; background-color: rgb(250,250,250); border-radius: 3px" ng-if="currentView === 'accountLedger' && atLeastOneAccount ">
+      <md-select placeholder="Choose Account" aria-label="Account List" ng-model="selectedAccount" md-on-close="sendAccount(selectedAccount)">
+        <md-option ng-repeat="singleAccount in accountsArray" ng-value="singleAccount">{{singleAccount.nickName}}</md-option>
+      </md-select>
+    </md-input-container>
+    <md-button ng-repeat="button in navButtons" class="md-raised" aria-label={{button.buttonLabel}} ng-click="clickedChoice(button.viewChange, button.extraParameters)">
+      {{button.buttonLabel}}
+    </md-button>
+    <span flex="5"></span>
+  </md-toolbar>
+</md-content>
+
+<md-fab-speed-dial md-open="speedDial.isOpen" md-direction="down" class="md-scale md-fab-top-right">
+  <md-fab-trigger>
+    <md-button aria-label="menu" class="md-fab md-raised md-mini">
+      <md-icon md-svg-src="img/menu.svg"></md-icon>
+    </md-button>
+  </md-fab-trigger>
+
+  <md-fab-actions>
+    <md-button aria-label="Logout" class="md-fab md-raised md-mini">
+      <md-tooltip md-direction="left">Logout</md-tooltip>
+      <md-icon md-svg-src="img/logout.svg" aria-label="Logout"></md-icon>
+    </md-button>
+  </md-fab-actions>
+
+  <md-fab-actions>
+    <md-button aria-label="Ledger" class="md-fab md-raised md-mini" ng-click="clickedChoice('accountLedger')">
+      <md-tooltip md-direction="left">Account Ledger</md-tooltip>
+      <md-icon md-svg-src="img/ledger.svg" aria-label="Ledger"></md-icon>
+    </md-button>
+  </md-fab-actions>
+
+  <md-fab-actions>
+    <md-button aria-label="Writer" class="md-fab md-raised md-mini" ng-click="clickedChoice('chequeWriter')">
+      <md-tooltip md-direction="left">Check Writer</md-tooltip>
+      <md-icon md-svg-src="img/writer.svg" aria-label="Writer"></md-icon>
+    </md-button>
+  </md-fab-actions>
+</md-fab-speed-dial>
+

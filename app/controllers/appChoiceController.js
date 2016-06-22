@@ -1,5 +1,11 @@
-// This simply assigns a navbar heading to a angular url
+// The splash page buttons
+app.controller("appChoiceController", function($scope, navBarFactory, XHRFactory, localDataStorageFactory){
 
-app.controller("appChoiceController", function($scope){
+  // Pulls the account info and sents it to be stored locally
+  XHRFactory.pullXHRData("json/basicData.json").then( response => localDataStorageFactory.addNewAccount(response.data.accounts));
+
+  $scope.clickedChoice = function(sentChoice) {
+    navBarFactory.setCurrentView(sentChoice);
+  }
 
 });

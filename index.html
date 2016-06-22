@@ -8,31 +8,16 @@
 </head>
 <body ng-app="ChequeYrslf">
 
-<!-- Navbar Position   -->
-<div ng-controller="navBarController as navBar">
-  {{navItems}}
-<button ng-click="clickChange()">Click Me</button>
-</div>
+<!-- Navbar Position -->
+<div class="print-remove" ng-controller="navBarController" >
+  <div layout="column" ng-include="'./partials/navBar.html'"></div> 
 
 <!-- Main Body Position -->
-  <section id="content-area" ng-controller="checkBuilderAJs">
-    <div id="check-area">
-      <div id="check-1">
-        <x-bank-address></x-bank-address>
-        <x-check-number></x-check-number>
-        <x-frac-routing></x-frac-routing>
-        <x-mirc-code></x-mirc-code>
-        <x-payor></x-payor>
-        <x-check-date></x-check-date>
-        <x-check-memo></x-check-memo>
-        <x-payee></x-payee>
-        <x-written-payment></x-written-payment>
-        <x-check-signature></x-check-signature>
-      </div>
-    </div>
-  </section>
-<!-- <div ng-if="navBar.clicked" ng-include="'./partials/appChoice.html'"></div> -->
-
+  <div ng-if="currentView === 'appChoice'" ng-include="'./partials/appChoice.html'" ng-controller='appChoiceController'></div>
+  <div ng-if="currentView === 'accountLedger'" ng-include="'./partials/accountLedger.html'" ng-controller="accountLedgerController"></div>
+  <div ng-if="currentView === 'chequeWriter'" ng-include="'./partials/chequeWriter.html'" ng-controller="checkBuilderAJs"></div>
+  <div ng-if="currentView === 'addNewAccount'" ng-include="'./partials/newAccount.html'" ng-controller="newAccountController"></div>
+</div>
 
   <!-- Framework Libraries -->
   <script type="text/javascript" src="./lib/bower_components/angular/angular.js"></script>
@@ -41,14 +26,15 @@
   <script type="text/javascript" src="./lib/bower_components/angular-aria/angular-aria.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-messages/angular-messages.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-material/angular-material.js"></script>
-  <!-- <script type="text/javascript" src="./lib/bower_components/jquery/dist/jquery.js"></script> -->
-  <!-- <script type="text/javascript" src="./lib/bower_components/jquery-ui/jquery-ui.js"></script> -->
 
   <!-- My Code -->
   <script type="text/javascript" src="./app/app.js"></script>
   <script type="text/javascript" src="./app/factories/XHRFactory.js"></script>
+  <script type="text/javascript" src="./app/factories/navBarFactory.js"></script>
+  <script type="text/javascript" src="./app/factories/localDataStorageFactory.js"></script>
   <script type="text/javascript" src="./app/controllers/checkBuilderAJs.js"></script>
   <script type="text/javascript" src="./app/controllers/navBarController.js"></script>
+  <script type="text/javascript" src="./app/controllers/newAccountController.js"></script>
   <script type="text/javascript" src="./app/controllers/appChoiceController.js"></script>
   <script type="text/javascript" src="./app/controllers/chequeWriterController.js"></script>
   <script type="text/javascript" src="./app/controllers/accountLedgerController.js"></script>

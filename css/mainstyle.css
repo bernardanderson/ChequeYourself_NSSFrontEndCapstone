@@ -4,6 +4,62 @@ body {
   margin: 0;
 }
 
+md-fab-speed-dial {
+  margin-top: -13px;
+}
+
+.red-bold {
+  color: red;
+  font-weight: bold;
+}
+
+.black-bold {
+  font-weight: bold;
+}
+
+.navbar-overflow {
+  overflow: hidden;
+}
+
+.ledger-div-padding {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}
+
+.ledger-div-format {
+  color: #726C6B;
+  text-align: center;
+  padding-bottom: 3px;
+}
+
+.ledger-div-odd-color {
+  background-color: #F2F0EE;
+}
+
+.thinner-btn {
+  height: 15px;
+}
+
+.add-ledger-btn {
+  padding: 0 8px 7px 8px;
+  margin-top: 18px;
+}
+
+.new-transaction-input {
+  margin-top: 5px;
+  height: 65px;
+  overflow: hidden;
+}
+
+.sm-font {
+  font-size: 10pt;
+}
+
+
+.inline {
+  display: inline-block;
+}
 
 .quick-border {
   border: 1px solid green;
