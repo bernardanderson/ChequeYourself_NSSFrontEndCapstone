@@ -1,4 +1,15 @@
-app.controller("checkBuilderAJs", function($scope, XHRFactory){
+app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, localDataStorageFactory){
+
+  navBarFactory.setNavButtons([
+    {
+      buttonLabel: "Print Checks",
+      viewChange: "chequeWriter"
+    },
+    {
+      buttonLabel: "Clear Checks",
+      viewChange: "chequeWriter"
+    }
+  ]);
 
   // Object that holds all the element data from the templates.
   $scope.checkEntryElementData = {};

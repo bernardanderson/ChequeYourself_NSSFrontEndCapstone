@@ -42,7 +42,7 @@
       </md-card-title>
       <div layout="row" class="ledger-div-format">
         <span flex="5"></span>
-        <div flex="2"><img style="width: 25px;" src="img/writer.svg"> </div>
+        <div flex="2">Add2Check </div>
         <div flex="8">Check</div>
         <div flex="10">Date</div>
         <div flex="20">Transaction</div>
@@ -51,9 +51,9 @@
         <div flex="10">Check Amount</div>
         <div flex="20">Running Total <br>{{currentlySelectedAccount()}}</div>
       </div>
-        <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in accountItems">
+        <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in accountItems" layout-align="end center" ng-init="wasClicked = false" >
         <span flex="5"></span>
-          <md-checkbox ng-model="checked" aria-label="Print2Check"></md-checkbox>
+          <md-button layout-align="start" ng-model="lineItem" ng-class="{'background-green': wasClicked === true}" ng-click="wasClicked = !wasClicked; onLedgerChecked(lineItem)" aria-label="Add2Check"><img style="width: 25px; margin: 0 auto 0 auto;" ng-src="{{wasClicked && 'img/checkmark.svg' || 'img/writer.svg'}}"></md-button>
           <div flex="8" >{{lineItem.checkNum}}</div>
           <div flex="10">{{lineItem.checkDate}}</div>
           <div flex="20">{{lineItem.transaction}}</div>

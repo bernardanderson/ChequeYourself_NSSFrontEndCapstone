@@ -6,11 +6,15 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   $scope.newSingleLineItem = {};
 
-  $scope.selectedAccountCurrentAmount = 0;
+  // $scope.selectedAccountCurrentAmount = 0;
+
+  // Keeps track of the selected ledger items to be sent to the check printer
+  $scope.checkedItems = [];
 
   // Resets the editting mode to false when returning to the Account Ledger
   localDataStorageFactory.isEditClick = false;
 
+  // Checks to see if the user has created at least one account, if not, they can only add an account instead of adding/editing.
   if (localDataStorageFactory.currentAccounts.length === 0) {
     navBarFactory.setNavButtons(
       [{
@@ -34,7 +38,6 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   // Gets the starting account amount for displaying on the Account Ledger Page
   $scope.currentlySelectedAccount = function() {
-
     let selectedAccountData = localDataStorageFactory.selectedAccount;
     if (selectedAccountData.length > 0) {
       $scope.selectedAccountStartingAmount = selectedAccountData[0].startingAmount;
@@ -75,6 +78,22 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     $scope.newSingleLineItem = {}; // Clears the newSingleLineItem inputs on the DOM
 
   }
+
+  // When an ledger item is checked this either adds it to the array of things to print a check of or removes it from the
+  //  the array.
+  $scope.onLedgerChecked = function(sentLedgerItem) {
+
+    let indexOfSentLedgerItem = $scope.checkedItems.indexOf(sentLedgerItem);
+
+    if (indexOfSentLedgerItem === -1) {
+      $scope.checkedItems.push(sentLedgerItem);
+    } else {
+      $scope.checkedItems.splice(indexOfSentLedgerItem, 1);
+    }
+
+    console.log("$scope.checkedItems", $scope.checkedItems);
+  }
+
 
   //Watches for selection in the navBar selected account list
   $scope.$watchCollection(function() {return localDataStorageFactory.selectedAccount}, function(newVal, oldVal) {
