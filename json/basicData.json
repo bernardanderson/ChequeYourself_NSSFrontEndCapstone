@@ -2,12 +2,18 @@
   "accounts": {
     "account0": {
       "accountID": "a1233969-915d-4d08-8c88-9976a37655a5",
-      "accountNumber": "#443465252",
+      "accountNumber": "443465252",
       "accountType": "Checking",
       "bankName": "SunTrust",
+      "bankCity": "Nashville",
       "bankState": "TN",
       "bankStreet": "111 East West St",
       "bankZip": "55119",
+      "userName": "Billy Mays",
+      "userCity": "Groundville",
+      "userState": "MD",
+      "userStreet": "111 Redding Rd",
+      "userZip": "10324",
       "comments": "This is a bogus account",
       "nickName": "Account 0",
       "routingNumber": "004453453",
@@ -15,12 +21,18 @@
     },
     "account1": {
       "accountID": "b1233969-645c-4d08-8c88-9976a37655a5",
-      "accountNumber": "#423424",
+      "accountNumber": "000423424",
       "accountType": "Checking",
       "bankName": "5/3",
+      "bankCity": "Nashville",
       "bankState": "TN",
       "bankStreet": "112 West East St",
       "bankZip": "37221",
+      "userName": "Billy Mays",
+      "userCity": "Groundville",
+      "userState": "MD",
+      "userStreet": "111 Redding Rd",
+      "userZip": "10324",
       "comments": "This is a bogus account",
       "nickName": "Account 1",
       "routingNumber": "004453453",
@@ -35,6 +47,7 @@
       "checkDate": "05/16",
       "checkNum": "1023",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Bellevue YMCA",
       "type": "Withdrawl"
     },
@@ -45,6 +58,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Withdrawl"
     },
@@ -55,6 +69,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Withdrawl"
     },
@@ -65,6 +80,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Deposit"
     },
@@ -75,6 +91,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Withdrawl"
     },
@@ -85,6 +102,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Withdrawl"
     },
@@ -95,6 +113,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Deposit"
     },
@@ -105,6 +124,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Withdrawl"
     },
@@ -115,6 +135,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Withdrawl"
     },
@@ -125,6 +146,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Withdrawl"
     },
@@ -135,6 +157,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Deposit"
     },
@@ -145,6 +168,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Withdrawl"
     },
@@ -155,6 +179,7 @@
       "checkDate": "05/15",
       "checkNum": "1025",
       "lineItemID": "26f44e23-028c-4750-81b7-9bbceaff2c35",
+      "memo": "This is a test",
       "transaction": "Cash",
       "type": "Deposit"
     }

@@ -17,9 +17,13 @@
     <label>Bank Name</label>
     <input ng-model="newAccount.bankName">
   </md-input-container>
-  <md-input-container flex="30">
+  <md-input-container flex="20">
     <label>Bank Street Number</label>
     <input ng-model="newAccount.bankStreet">
+  </md-input-container>
+  <md-input-container flex="10">
+    <label>Bank City</label>
+    <input ng-model="newAccount.bankCity">
   </md-input-container>
   <md-input-container flex="10" class="md-block" flex-gt-sm>
     <label>State</label>
@@ -58,7 +62,7 @@
 
 <md-content layout-gt-sm="row" >
     <md-input-container flex="30" class="md-block">
-      <label>Account Notes/Comments</label>
+      <label>Account Memo/Comments</label>
       <textarea ng-model="newAccount.comments" rows="3" md-select-on-focus></textarea>
     </md-input-container>
     <span flex="5"></span>

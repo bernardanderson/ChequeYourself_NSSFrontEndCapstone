@@ -8,9 +8,6 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   // $scope.selectedAccountCurrentAmount = 0;
 
-  // Keeps track of the selected ledger items to be sent to the check printer
-  $scope.checkedItems = [];
-
   // Resets the editting mode to false when returning to the Account Ledger
   localDataStorageFactory.isEditClick = false;
 
@@ -83,17 +80,14 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
   //  the array.
   $scope.onLedgerChecked = function(sentLedgerItem) {
 
-    let indexOfSentLedgerItem = $scope.checkedItems.indexOf(sentLedgerItem);
+    let indexOfSentLedgerItem = localDataStorageFactory.selectedLineItemsForPrint.indexOf(sentLedgerItem);
 
     if (indexOfSentLedgerItem === -1) {
-      $scope.checkedItems.push(sentLedgerItem);
+      localDataStorageFactory.selectedLineItemsForPrint.push(sentLedgerItem);
     } else {
-      $scope.checkedItems.splice(indexOfSentLedgerItem, 1);
+      localDataStorageFactory.selectedLineItemsForPrint.splice(indexOfSentLedgerItem, 1);
     }
-
-    console.log("$scope.checkedItems", $scope.checkedItems);
   }
-
 
   //Watches for selection in the navBar selected account list
   $scope.$watchCollection(function() {return localDataStorageFactory.selectedAccount}, function(newVal, oldVal) {
