@@ -276,7 +276,7 @@ image at the native 8.5x11in width-height*/
     visibility: hidden;
   }
 
-  .blank-inputter {
+  .blank-inputter, .inputter-special-background {
     background-color: transparent;
   }
 
