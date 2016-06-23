@@ -1,9 +1,8 @@
 <section id="content-area">
-  <div id="check-area">
-    <div id="check-1" ng-model="checkData">
+  <div id="check-area" ng-model="checkData">
+    <div ng-repeat="checkNum in numberOfChecks" id="check-{{checkNum}}">
       <x-bank-address></x-bank-address>
       <x-check-number></x-check-number>
-      <!-- <x-frac-routing></x-frac-routing> -->
       <x-mirc-code></x-mirc-code>
       <x-payor></x-payor>
       <x-check-date></x-check-date>
@@ -12,7 +11,10 @@
       <x-written-payment></x-written-payment>
       <x-check-signature></x-check-signature>
     </div>
-    <div id="check-2" >
+  </div>
+</section>
+
+   <!--  <div id="check-2" >
       <x-bank-address></x-bank-address>
       <x-check-number></x-check-number>
       <x-frac-routing></x-frac-routing>
@@ -35,6 +37,4 @@
       <x-payee></x-payee>
       <x-written-payment></x-written-payment>
       <x-check-signature></x-check-signature>
-    </div>
-  </div>
-</section>
+    </div> -->

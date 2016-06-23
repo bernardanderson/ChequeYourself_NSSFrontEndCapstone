@@ -3,24 +3,28 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
   navBarFactory.setNavButtons([
     {
       buttonLabel: "Print Checks",
-      viewChange: "chequeWriter"
+      viewChange: ""
     },
     {
       buttonLabel: "Clear Checks",
-      viewChange: "chequeWriter"
+      viewChange: "chequeWriter",
+      extraParameters: "ClearChecks"
     }
   ]);
 
+  // Localizes the account selected from the navBar 
   $scope.selectedAccount = localDataStorageFactory.selectedAccount;
 
-  // Object that holds all the element data from the templates.
-  // $scope.checkEntryElementData = {};
-
+  // Used in hiding the titles on the movable check elements
   $scope.hideElement = false;
 
+  // Changes the status of the hidden/shown elements in the movable check elements
   $scope.changeHide = function(sentChange) {
     $scope.hideElement = !$scope.hideElement;
   }
+
+  // The current number of checks to loop through
+  $scope.numberOfChecks = [1, 2, 3];
 
   // Pulls the check elements from the local json and populates the check fields
   XHRFactory.pullXHRData("json/elements.json").then(function(response) {
@@ -62,4 +66,16 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
     }
   }
 
+  // $scope.$watchCollection(function() {return localDataStorageFactory.selectedLineItemsForPrint}, function(newVal, oldVal) {
+  //   console.log("newVal.length: ", newVal.length);
+  //   console.log("newVal: ", newVal);
+  //   if (newVal.length === 0){
+  //     $scope.checkObjects = newVal;
+  //     // $scope.accountsArray.splice(0);
+  //   } else {
+  //     $scope.checkObjects = newVal;
+  //     // $scope.accountsArray = localDataStorageFactory.currentAccounts;
+  //     // console.log("The current status of atLeastOneAccount: ", $scope.atLeastOneAccount)
+  //   }
+  // });
 });

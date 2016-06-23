@@ -12,6 +12,7 @@
     </md-radio-group>
   </md-input-container>
 </md-content>
+
 <md-content layout-gt-sm="row" >
   <md-input-container flex="20">
     <label>Bank Name</label>
@@ -26,7 +27,7 @@
     <input ng-model="newAccount.bankCity">
   </md-input-container>
   <md-input-container flex="10" class="md-block" flex-gt-sm>
-    <label>State</label>
+    <label>Bank State</label>
     <md-select ng-model="newAccount.bankState">
       <md-option ng-repeat="state in states" value="{{state.abbrev}}">
           {{state.abbrev}}
@@ -40,7 +41,33 @@
 </md-content>
 
 <md-content layout-gt-sm="row" >
+  <md-input-container flex="20">
+    <label>Account Holder Name</label>
+    <input ng-model="newAccount.userName">
+  </md-input-container>
+  <md-input-container flex="20">
+    <label>Account Holder Street Number</label>
+    <input ng-model="newAccount.userStreet">
+  </md-input-container>
+  <md-input-container flex="10">
+    <label>Account Holder City</label>
+    <input ng-model="newAccount.userCity">
+  </md-input-container>
+  <md-input-container flex="10" class="md-block" flex-gt-sm>
+    <label>Acc Hldr St</label>
+    <md-select ng-model="newAccount.userState">
+      <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+          {{state.abbrev}}
+      </md-option>
+    </md-select>
+  </md-input-container>
+  <md-input-container flex="10">
+    <label>Account Holder Zip Code</label>
+    <input ng-model="newAccount.userZip">
+  </md-input-container>
+</md-content>
 
+<md-content layout-gt-sm="row" >
   <md-input-container flex="20">
     <label>ABA Routing Number</label>
     <input ng-model="newAccount.routingNumber">
