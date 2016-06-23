@@ -17,6 +17,10 @@
     <label class="sm-font">Category (Optional)</label>
     <input ng-model="newSingleLineItem.category">
   </md-input-container>
+  <md-input-container flex="10">
+    <label class="sm-font">Memo</label>
+    <input ng-model="newSingleLineItem.memo">
+  </md-input-container>
   <md-input-container>
     <label class="sm-font" flex="5">Amount</label>
     <input ng-model="newSingleLineItem.checkAmount">
@@ -42,25 +46,27 @@
       </md-card-title>
       <div layout="row" class="ledger-div-format">
         <span flex="5"></span>
-        <div flex="2"><img style="width: 25px;" src="img/writer.svg"> </div>
+        <div flex="2">Add2Check </div>
         <div flex="8">Check</div>
         <div flex="10">Date</div>
         <div flex="20">Transaction</div>
         <div flex="10">Category</div>
         <div flex="10">Type</div>
         <div flex="10">Check Amount</div>
-        <div flex="20">Running Total <br>{{currentlySelectedAccount()}}</div>
+        <div flex="10">Running Total <br>{{currentlySelectedAccount()}}</div>
+        <div flex="10"></div>
       </div>
-        <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in accountItems">
+        <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in accountItems" layout-align="end center" ng-init="wasClicked = false" >
         <span flex="5"></span>
-          <md-checkbox ng-model="checked" aria-label="Print2Check"></md-checkbox>
+          <md-button layout-align="start" ng-model="lineItem" ng-class="{'background-green': wasClicked === true}" ng-click="wasClicked = !wasClicked; onLedgerChecked(lineItem)" aria-label="Add2Check"><img style="width: 25px; margin: 0 auto 0 auto;" ng-src="{{wasClicked && 'img/checkmark.svg' || 'img/writer.svg'}}"></md-button>
           <div flex="8" >{{lineItem.checkNum}}</div>
           <div flex="10">{{lineItem.checkDate}}</div>
           <div flex="20">{{lineItem.transaction}}</div>
           <div flex="10">{{lineItem.category}}</div>
           <div flex="10">{{lineItem.type}}</div>
           <div flex="10" ng-class="'{{lineItem.type}}' === 'Withdrawl' ? 'red-bold' : 'black-bold'">{{lineItem.checkAmount}}</div>
-          <div flex="20">{{calcLineItemTotal(lineItem)}}</div>
+          <div flex="10">{{calcLineItemTotal(lineItem)}}</div>
+          <div flex="10"><img ng-src="img/edit.svg" style="width: 15px;" ng-model="lineItem" ng-click="editLineItem(lineItem)" aria-label="Edit Line Item"></div>
         </div>
     </md-card>
   </md-content>

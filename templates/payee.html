@@ -6,8 +6,8 @@
   </div>
 
   <div class="inputter inputter-whitespace">{{checkEntryElementData.payee.internalText}}
-    <div class="blank-inputter" contenteditable="true" style="{{checkEntryElementData.payee.position[2]}}"></div>
-    <div class="blank-inputter" contenteditable="true" style="{{checkEntryElementData.payee.position[1]}}"></div>
+    <div class="blank-inputter" contenteditable="true" style="{{checkEntryElementData.payee.position[2]}}">{{checkData[$index].checkAmount}}</div>
+    <div class="blank-inputter" contenteditable="true" style="{{checkEntryElementData.payee.position[1]}}">{{checkData[$index].checkPayee}}</div>
   </div>
 
 </div>

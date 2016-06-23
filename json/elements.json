@@ -4,7 +4,7 @@
       "inputType": "blankInput",
       "containerTitle": "Bank Address",
       "id": "bank-name",
-      "position" : "left: 4.79in; top: 0.40in;",
+      "position" : "left: 4.19in; top: 0.40in;",
       "internalText": "1st Bank of\nCuccooTown",
       "specialClass": ""
     },

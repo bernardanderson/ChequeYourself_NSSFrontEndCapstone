@@ -25,6 +25,10 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
     if (sentParameters === "Edit") {
       localDataStorageFactory.isEditClick = true;
     }
+
+    if (sentParameters === "ClearChecks") {
+      localDataStorageFactory.selectedLineItemsForPrint.splice(0);
+    }
     navBarFactory.setCurrentView(sentNewView);
   }
 
@@ -48,14 +52,14 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
   // This may not be needed due to the ng-repeat
   //Watches for changes in the current accounts list
   $scope.$watchCollection(function() {return localDataStorageFactory.currentAccounts}, function(newVal, oldVal) {
-    console.log("newVal.length: ", newVal.length);
+    // console.log("newVal.length: ", newVal.length);
     if (newVal.length === 0){
       $scope.atLeastOneAccount = false;
       // $scope.accountsArray.splice(0);
     } else {
       $scope.atLeastOneAccount = true;
       // $scope.accountsArray = localDataStorageFactory.currentAccounts;
-      console.log("The current status of atLeastOneAccount: ", $scope.atLeastOneAccount)
+      // console.log("The current status of atLeastOneAccount: ", $scope.atLeastOneAccount)
     }
   });
 
