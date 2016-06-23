@@ -53,7 +53,8 @@
         <div flex="10">Category</div>
         <div flex="10">Type</div>
         <div flex="10">Check Amount</div>
-        <div flex="20">Running Total <br>{{currentlySelectedAccount()}}</div>
+        <div flex="10">Running Total <br>{{currentlySelectedAccount()}}</div>
+        <div flex="10"></div>
       </div>
         <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in accountItems" layout-align="end center" ng-init="wasClicked = false" >
         <span flex="5"></span>
@@ -64,7 +65,8 @@
           <div flex="10">{{lineItem.category}}</div>
           <div flex="10">{{lineItem.type}}</div>
           <div flex="10" ng-class="'{{lineItem.type}}' === 'Withdrawl' ? 'red-bold' : 'black-bold'">{{lineItem.checkAmount}}</div>
-          <div flex="20">{{calcLineItemTotal(lineItem)}}</div>
+          <div flex="10">{{calcLineItemTotal(lineItem)}}</div>
+          <div flex="10"><img ng-src="img/edit.svg" style="width: 15px;" ng-model="lineItem" ng-click="editLineItem(lineItem)" aria-label="Edit Line Item"></div>
         </div>
     </md-card>
   </md-content>

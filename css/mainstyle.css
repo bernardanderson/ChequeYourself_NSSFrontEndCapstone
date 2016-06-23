@@ -8,6 +8,12 @@ md-fab-speed-dial {
   margin-top: -13px;
 }
 
+/*Gets rid of the weird border around imgs in ng-click*/
+img:focus {
+  outline: none;
+  border: 0;
+}
+
 .red-bold {
   color: red;
   font-weight: bold;

@@ -65,18 +65,38 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   // When the "Add to Ledger" button is clicked to add a new line item to the ledger, this is used to add a 
   //  single item to the localDataStorageFactory selectedAccountLedgerItems array.
+  //  This also handles the updating of the line items by checking to see if the "newSingleLineItem" already has a
+  //  lineItemID (which means the item already exists and is being edited)
   $scope.addNewLineItem = function() {
-    
+
     let sentLineItem = $scope.newSingleLineItem;
+    
+    if (sentLineItem.lineItemID) {
+      
+      let lineItemID = sentLineItem.lineItemID;
+      
+      for (var element in localDataStorageFactory.selectedAccountLedgerItems) {
+        if (localDataStorageFactory.selectedAccountLedgerItems[element].lineItemID === lineItemID) {
+          sentLineItem.checkAmount = localDataStorageFactory.formatNumbersToCurrencyString(sentLineItem.checkAmount);
+          localDataStorageFactory.selectedAccountLedgerItems[element] = sentLineItem;
+          break;
+        }
+      }
+    } else {
+      
     let tempLineItemID = localDataStorageFactory.generateUniqueId();
     sentLineItem.lineItemID = tempLineItemID;
     
     sentLineItem.accountID = localDataStorageFactory.selectedAccount[0].accountID
     sentLineItem.checkAmount = localDataStorageFactory.formatNumbersToCurrencyString(sentLineItem.checkAmount);
     localDataStorageFactory.addNewAccountLedgerItem(sentLineItem);
+    }
 
     $scope.newSingleLineItem = {}; // Clears the newSingleLineItem inputs on the DOM
+  }
 
+  $scope.editLineItem = function(sentLineItem) {
+    $scope.newSingleLineItem = sentLineItem;
   }
 
   // When an ledger item is checked this either adds it to the array of things to print a check of or removes it from the
