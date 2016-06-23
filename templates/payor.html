@@ -1,6 +1,6 @@
 <div dragme class="title-container showview draggable" ng-mouseenter="changeHide()" ng-mouseleave="changeHide()" style="{{checkEntryElementData.payor.position}}">
 
-  <div class="inputter inputter-whitespace" contenteditable="true">{{checkData.userAddress}}</div>
+  <div class="inputter inputter-special-background inputter-whitespace" contenteditable="true">{{checkData[$index].userAddress}}</div>
 
   <div ng-style="{visibility: hideElement && 'visible' || 'hidden'}">
     <p class="info-font print-remove">{{checkEntryElementData.payor.containerTitle}}</p>

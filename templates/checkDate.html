@@ -1,7 +1,7 @@
 <div dragme class="title-container showview draggable" ng-mouseenter="changeHide()" ng-mouseleave="changeHide()" style="{{checkEntryElementData.checkDate.position[0]}}">
 
   <div class="inputter">{{checkEntryElementData.checkDate.internalText}}
-    <div class="blank-inputter" contenteditable="true" style="{{checkEntryElementData.checkDate.position[1]}}">{{checkData.checkDate}}</div>
+    <div class="blank-inputter" contenteditable="true" style="{{checkEntryElementData.checkDate.position[1]}}">{{checkData[$index].checkDate}}</div>
   </div>
 
   <div ng-style="{visibility: hideElement && 'visible' || 'hidden'}">

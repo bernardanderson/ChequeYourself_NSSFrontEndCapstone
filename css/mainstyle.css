@@ -112,21 +112,21 @@ image at the native 8.5x11in width-height*/
 
 /*Styling for the three blank check divs*/
 /**/
-#check-1 {
+#check-0 {
   position: absolute;
   top: 0;
   width: 8.5in;
   height: 3.5in;
 }
 
-#check-2 {
+#check-1 {
   position: absolute;
   top: 3.5in;
   width: 8.5in;
   height: 3.5in;
 }
 
-#check-3 {
+#check-2 {
   position: absolute;
   top: 7in;
   width: 8.5in;
@@ -146,11 +146,15 @@ image at the native 8.5x11in width-height*/
 /*Styles the editable text input boxes */
 .inputter {
   display: inline-block;
-  min-width: 0.1in;
+  min-width: 1.1in;
   cursor: text;
   background-color: transparent;
   -moz-user-select: none;
   -webkit-user-select: none;
+}
+
+.inputter-special-background {
+  background-color: rgba(255,255,224, 0.6);
 }
 
 .inputter-whitespace {
