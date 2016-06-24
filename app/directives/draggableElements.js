@@ -17,10 +17,13 @@ app.directive('dragme', ['$document', function($document) {
         $document.on('mousemove', mousemove);
         $document.on('mouseup', mouseup);
 
-        // console.log(event)
-        // console.log(startX, startY);
-        // console.log(x, y);
-        // console.log(event.pageX, event.pageY);
+        console.log("click event", event)
+        console.log("click startx", startX)
+        console.log("click starty", startY)
+        console.log("click value x", x);
+        console.log("click value y", y);
+        console.log("click event.pageX", event.pageX);
+        console.log("click event.pageY", event.pageY);
       });
 
       function mousemove(event) {
@@ -30,6 +33,18 @@ app.directive('dragme', ['$document', function($document) {
         // Keeps the objects from moving off screen to the left
         x < 0 ? x = 0 : x = x;
         y < 0 ? y = 0 : y = y;
+
+        console.log("move event", event)
+        console.log("move startx", startX)
+        console.log("move starty", startY)
+        console.log("move value x", x);
+        console.log("move value y", y);
+        console.log("move event.pageX", event.pageX);
+        console.log("move event.pageY", event.pageY);
+
+
+
+
 
         element.css({
           top: y + 'px',

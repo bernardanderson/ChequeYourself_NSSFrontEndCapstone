@@ -2,6 +2,9 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   $scope.pageTitle = "Account Ledger";
 
+  // Clears any LedgerItems on page load
+  localDataStorageFactory.selectedAccountLedgerItems.splice(0);
+
   $scope.accountItems = localDataStorageFactory.selectedAccountLedgerItems;
 
   $scope.newSingleLineItem = {};
