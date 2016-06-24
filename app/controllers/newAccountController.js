@@ -1,5 +1,6 @@
 app.controller("newAccountController", function($scope, navBarFactory, localDataStorageFactory){
 
+
   navBarFactory.setNavButtons([
     {
       buttonLabel: "Cancel Submission",
@@ -8,8 +9,14 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
   ]);
 
   if (localDataStorageFactory.selectedAccount.length > 0 && localDataStorageFactory.isEditClick === true) {
+
     $scope.newAccount = localDataStorageFactory.selectedAccount[0];
+
+    navBarFactory.changeNavBarTitle("Editing Account: " + $scope.newAccount.nickName);
+
   } else {
+
+    navBarFactory.changeNavBarTitle("Add New Account");
 
     $scope.newAccount = {
       nickName: null,

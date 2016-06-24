@@ -2,7 +2,7 @@
 
 app.controller("navBarController", function($scope, navBarFactory, localDataStorageFactory){
 
-  $scope.navTitle = "Basic Navbar";
+  $scope.navTitle = navBarFactory.navTitle;
 
   // Var which holds the current view's nav buttons
   $scope.navButtons = navBarFactory.navButtons;
