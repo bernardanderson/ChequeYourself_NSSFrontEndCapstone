@@ -62,13 +62,8 @@ img:focus {
   font-size: 10pt;
 }
 
-
 .inline {
   display: inline-block;
-}
-
-.quick-border {
-  border: 1px solid green;
 }
 
 /**/
@@ -76,20 +71,20 @@ img:focus {
 /**/
 /*Styles the navbar header so it is fixed to the top and is static */
 #nav-holder {
-  display: block;
   width: 100%;
   position: fixed;
-  padding: 0.1in;
-  z-index: 100;
-  background-color: rgba(255, 255, 255, 0.80);
-  border-bottom: 1px solid black;
+  z-index: 10;
+  /*display: block;*/
+  /*padding: 0.1in;*/
+  /*background-color: rgba(255, 255, 255, 0.80);*/
+  /*border-bottom: 1px solid black;*/
 }
 
 /*Shifts the section element holding the non-navbar info down so it's not covered by the nav*/
 #content-area {
-  width: 8.5in;
-  height: 11in;
-  padding: 0.40in 0 0 0;
+  /*width: 8.5in;*/
+  /*height: 11in;*/
+  padding: 0.65in 0 0 0;
   overflow: hidden;
 }
 
@@ -269,6 +264,8 @@ image at the native 8.5x11in width-height*/
   }
 
   #content-area {
+    width: 8.5in;
+    height: 11in;
     padding: 0;
   }
 
@@ -276,7 +273,7 @@ image at the native 8.5x11in width-height*/
     visibility: hidden;
   }
 
-  .blank-inputter {
+  .blank-inputter, .inputter-special-background {
     background-color: transparent;
   }
 

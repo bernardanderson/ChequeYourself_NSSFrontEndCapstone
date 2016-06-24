@@ -76,7 +76,7 @@
       "inputType": "contentInput",
       "containerTitle": "Signature Line",
       "id": "sig-line",
-      "position": ["left: 5.49in; top: 2.34in;", "bottom: 0.80in; width: 2.6in;"],
+      "position": ["left: 5.49in; top: 2.34in;", "bottom: 0.45in; left: 0.25in; width: 2.5in;"],
       "internalText": "____________________________\nAUTHORIZED SIGNATURE",
       "specialClass": ""
     }

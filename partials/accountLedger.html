@@ -1,6 +1,6 @@
 <div>
   <md-content md-theme="special-input" layout-gt-sm="row" layout-align="center" layout-padding class="new-transaction-input">
-  <h4>New Item</h4>
+  <h5 flex="5">New Item</h5>
   <md-input-container flex="5">
     <label class="sm-font">Check #</label>
     <input ng-model="newSingleLineItem.checkNum">
@@ -64,7 +64,7 @@
           <div flex="20">{{lineItem.transaction}}</div>
           <div flex="10">{{lineItem.category}}</div>
           <div flex="10">{{lineItem.type}}</div>
-          <div flex="10" ng-class="'{{lineItem.type}}' === 'Withdrawl' ? 'red-bold' : 'black-bold'">{{lineItem.checkAmount}}</div>
+          <div flex="10" ng-class="lineItem.type === 'Withdrawl' ? 'red-bold' : 'black-bold'">{{lineItem.checkAmount}}</div>
           <div flex="10">{{calcLineItemTotal(lineItem)}}</div>
           <div flex="10"><img ng-src="img/edit.svg" style="width: 15px;" ng-model="lineItem" ng-click="editLineItem(lineItem)" aria-label="Edit Line Item"></div>
         </div>
