@@ -9,14 +9,16 @@
 <body ng-app="ChequeYrslf">
 
 <!-- Navbar Position -->
-<div class="print-remove" ng-controller="navBarController" >
-  <div layout="column" ng-include="'./partials/navBar.html'"></div> 
+<div class="print-remove" layout="column" ng-controller="navBarController" >
+  <div id="nav-holder" ng-include="'./partials/navBar.html'"></div> 
 
 <!-- Main Body Position -->
-  <div ng-if="currentView === 'appChoice'" ng-include="'./partials/appChoice.html'" ng-controller='appChoiceController'></div>
-  <div ng-if="currentView === 'accountLedger'" ng-include="'./partials/accountLedger.html'" ng-controller="accountLedgerController"></div>
-  <div ng-if="currentView === 'chequeWriter'" ng-include="'./partials/chequeWriter.html'" ng-controller="checkBuilderAJs"></div>
-  <div ng-if="currentView === 'addNewAccount'" ng-include="'./partials/newAccount.html'" ng-controller="newAccountController"></div>
+  <div id="content-area">
+    <div ng-if="currentView === 'appChoice'" ng-include="'./partials/appChoice.html'" ng-controller='appChoiceController'></div>
+    <div ng-if="currentView === 'accountLedger'" ng-include="'./partials/accountLedger.html'" ng-controller="accountLedgerController"></div>
+    <div ng-if="currentView === 'chequeWriter'" ng-include="'./partials/chequeWriter.html'" ng-controller="checkBuilderAJs"></div>
+    <div ng-if="currentView === 'addNewAccount'" ng-include="'./partials/newAccount.html'" ng-controller="newAccountController"></div>
+  </div>
 </div>
 
   <!-- Framework Libraries -->

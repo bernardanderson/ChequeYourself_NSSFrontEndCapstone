@@ -24,10 +24,10 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
     console.log("Clicked Choice: ", sentNewView, sentParameters)
     if (sentParameters === "Edit") {
       localDataStorageFactory.isEditClick = true;
-    }
-
-    if (sentParameters === "ClearChecks") {
+    } else if (sentParameters === "ClearChecks") {
       localDataStorageFactory.selectedLineItemsForPrint.splice(0);
+    } else if (sentParameters === "PrintChecks") {
+      print();
     }
     navBarFactory.setCurrentView(sentNewView);
   }

@@ -3,7 +3,8 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
   navBarFactory.setNavButtons([
     {
       buttonLabel: "Print Checks",
-      viewChange: ""
+      viewChange: "chequeWriter",
+      extraParameters: "PrintChecks"
     },
     {
       buttonLabel: "Clear Checks",
@@ -35,44 +36,29 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
 
 /////////
   if (localDataStorageFactory.selectedAccount.length === 1 && localDataStorageFactory.selectedLineItemsForPrint.length > 0) {
-    $scope.checkObjects = localDataStorageFactory.selectedLineItemsForPrint;
+    
+    let checkObjects = localDataStorageFactory.selectedLineItemsForPrint;
 
     $scope.checkData = [];
 
-    for (let i = 0; i < $scope.checkObjects.length; i++) {
+    for (let i = 0; i < checkObjects.length; i++) {
     
       $scope.checkData.push(
         {
           bankAddress: `${$scope.selectedAccount[0].bankName}\n` +
                        `${$scope.selectedAccount[0].bankStreet}\n` +
                        `${$scope.selectedAccount[0].bankCity}, ${$scope.selectedAccount[0].bankState} ${$scope.selectedAccount[0].bankZip}`,
-          micrCode: `O00${$scope.checkObjects[i].checkNum}O T${$scope.selectedAccount[0].routingNumber}T ${$scope.selectedAccount[0].accountNumber}O`,
-          checkDate: $scope.checkObjects[i].checkDate,
-          memo: $scope.checkObjects[i].memo,
-          checkNumber: $scope.checkObjects[i].checkNum,
-          checkAmount: parseFloat($scope.checkObjects[i].checkAmount.replace(/[^\d.]/g, '')).toFixed(2),
-          checkPayee: $scope.checkObjects[i].transaction,
+          micrCode: `O00${checkObjects[i].checkNum}O T${$scope.selectedAccount[0].routingNumber}T ${$scope.selectedAccount[0].accountNumber}O`,
+          checkDate: checkObjects[i].checkDate,
+          memo: checkObjects[i].memo,
+          checkNumber: checkObjects[i].checkNum,
+          checkAmount: parseFloat(checkObjects[i].checkAmount.replace(/[^\d.]/g, '')).toFixed(2),
+          checkPayee: checkObjects[i].transaction,
           userAddress: `${$scope.selectedAccount[0].userName}\n` +
                        `${$scope.selectedAccount[0].userStreet}\n` +
                        `${$scope.selectedAccount[0].userCity}, ${$scope.selectedAccount[0].userState} ${$scope.selectedAccount[0].userZip}`,
         })
-    console.log($scope.checkData[i]);
     }
-
-    // $scope.checkData = {
-    //   bankAddress: `${$scope.selectedAccount[0].bankName}\n` +
-    //                `${$scope.selectedAccount[0].bankStreet}\n` +
-    //                `${$scope.selectedAccount[0].bankCity}, ${$scope.selectedAccount[0].bankState} ${$scope.selectedAccount[0].bankZip}`,
-    //   micrCode: `O00${$scope.checkObjects[0].checkNum}O T${$scope.selectedAccount[0].routingNumber}T ${$scope.selectedAccount[0].accountNumber}O`,
-    //   checkDate: $scope.checkObjects[0].checkDate,
-    //   memo: $scope.checkObjects[0].memo,
-    //   checkNumber: $scope.checkObjects[0].checkNum,
-    //   checkAmount: parseFloat($scope.checkObjects[0].checkAmount.replace(/[^\d.]/g, '')).toFixed(2),
-    //   checkPayee: $scope.checkObjects[0].transaction,
-    //   userAddress: `${$scope.selectedAccount[0].userName}\n` +
-    //                `${$scope.selectedAccount[0].userStreet}\n` +
-    //                `${$scope.selectedAccount[0].userCity}, ${$scope.selectedAccount[0].userState} ${$scope.selectedAccount[0].userZip}`,
-    // }
     
   } else {
     $scope.checkData = {
@@ -82,20 +68,25 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
       memo: null,
       checkNumber: null,
       checkAmount: null,
-      checkPayee: null
+      checkPayee: null,
+      userAddress: null
     }
   }
 
-  // $scope.$watchCollection(function() {return localDataStorageFactory.selectedLineItemsForPrint}, function(newVal, oldVal) {
-  //   console.log("newVal.length: ", newVal.length);
-  //   console.log("newVal: ", newVal);
-  //   if (newVal.length === 0){
-  //     $scope.checkObjects = newVal;
-  //     // $scope.accountsArray.splice(0);
-  //   } else {
-  //     $scope.checkObjects = newVal;
-  //     // $scope.accountsArray = localDataStorageFactory.currentAccounts;
-  //     // console.log("The current status of atLeastOneAccount: ", $scope.atLeastOneAccount)
-  //   }
-  // });
+  // Watcher for the click of the "Clear Checks" button
+  $scope.$watchCollection(function() {return localDataStorageFactory.selectedLineItemsForPrint}, function(newVal, oldVal) {
+    console.log("newVal.length: ", newVal.length);
+    console.log("newVal: ", newVal);
+    if (newVal.length === 0){
+      $scope.checkData = {
+        bankAddress: null,
+        micrCode: null,
+        checkDate: null,
+        memo: null,
+        checkNumber: null,
+        checkAmount: null,
+        checkPayee: null
+      }
+    }
+  });
 });
