@@ -1,6 +1,6 @@
 app.controller("accountLedgerController", function($scope, navBarFactory, localDataStorageFactory){
 
-  $scope.pageTitle = "Account Ledger";
+  navBarFactory.changeNavBarTitle("Account Ledger");
 
   // Clears any LedgerItems on page load
   localDataStorageFactory.selectedAccountLedgerItems.splice(0);

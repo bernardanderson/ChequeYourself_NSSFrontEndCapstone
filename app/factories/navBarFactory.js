@@ -4,11 +4,19 @@ app.factory("navBarFactory", function(){
 
     currentView: 'appChoice',
 
+    navTitle: [],
+
     navButtons: [],
 
     // Updates the current view based on what button/functionality is selected
     setCurrentView: function(sentNewView) {
       this.currentView = sentNewView;
+    },
+
+    //  Changes the NavBar Title on page load
+    changeNavBarTitle: function(sentTitle) {
+      this.navTitle.splice(0);
+      this.navTitle.push(`Cheque-Yourself! - ${sentTitle}`);
     },
 
     // Changes the NavBar buttons according to the current view

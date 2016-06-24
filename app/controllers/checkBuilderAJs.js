@@ -1,5 +1,7 @@
 app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, localDataStorageFactory){
 
+  navBarFactory.changeNavBarTitle("Cheque Builder!");
+
   navBarFactory.setNavButtons([
     {
       buttonLabel: "Print Checks",
