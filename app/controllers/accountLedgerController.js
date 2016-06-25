@@ -15,7 +15,7 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
   localDataStorageFactory.selectedLineItemsForPrint.splice(0);
 
   // Checks to see if the user has created at least one account, if not, they can only add an account instead of adding/editing.
-  if (localDataStorageFactory.currentAccounts.length === 0) {
+  if (localDataStorageFactory.currentAccounts.length === 0 ) {
     navBarFactory.setNavButtons(
       [{
         buttonLabel: "Add New Account",

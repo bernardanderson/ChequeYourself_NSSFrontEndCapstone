@@ -8,6 +8,8 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
     }
   ]);
 
+  $scope.isEditClick = localDataStorageFactory.isEditClick;
+
   if (localDataStorageFactory.selectedAccount.length > 0 && localDataStorageFactory.isEditClick === true) {
 
     $scope.newAccount = localDataStorageFactory.selectedAccount[0];
@@ -49,6 +51,8 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
   // For saving a new account during the new account creation
   $scope.saveAccountInfo = (sentNewAccount) => {
 
+    sentNewAccount.startingAmount = parseFloat(sentNewAccount.startingAmount);
+
     $scope.newAccount = {
       nickName: sentNewAccount.nickName,
       bankName: sentNewAccount.bankName,
@@ -65,7 +69,7 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
       routingNumber: sentNewAccount.routingNumber,
       accountNumber: sentNewAccount.accountNumber,
       comments: sentNewAccount.comments,
-      startingAmount: sentNewAccount.startingAmount
+      startingAmount: parseFloat(sentNewAccount.startingAmount)
     }
 
     // Checks to see if the user is editing an account or adding a new account.  If editing, it keeps the accountID
@@ -80,6 +84,28 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
 
     localDataStorageFactory.isEditClick = false;
     console.log("Result of newAccount in localDataStorage: ", localDataStorageFactory.currentAccounts);
+    navBarFactory.setCurrentView('accountLedger');
+  }
+
+  // Deletes an account by cycling through the ledger items and deleting them based
+  //  on accountID and then deletes the actual account based on accountID
+  $scope.deleteAccount = (sentNewAccount) => {
+
+    let completeLedgerList = localDataStorageFactory.currentLedgerItems;
+    let completeAccountList = localDataStorageFactory.currentAccounts;
+
+    for (singleItem in completeLedgerList) {
+      if (completeLedgerList[singleItem].accountID === sentNewAccount.accountID) {
+        completeLedgerList.splice(singleItem,1);
+      }
+    }
+
+    for (singleAccount in completeAccountList) {
+      if (completeAccountList[singleAccount].accountID === sentNewAccount.accountID) {
+        completeAccountList.splice(singleAccount,1);
+      }
+    }
+    
     navBarFactory.setCurrentView('accountLedger');
   }
 
