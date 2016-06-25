@@ -53,6 +53,18 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     }
   }
 
+  // Deletes a single ledger item from the currentLedgerItems array
+  $scope.deleteLineItem = function(sentCurrentLineItem) {
+
+    let completeLedgerList = localDataStorageFactory.currentLedgerItems;
+    for (singleItem in completeLedgerList) {
+      if (completeLedgerList[singleItem].lineItemID === sentCurrentLineItem.lineItemID) {
+        completeLedgerList.splice(singleItem, 1);
+        break;
+      };
+    }
+  }
+
   // Gets the starting account amount for displaying on the Account Ledger Page
   $scope.currentlySelectedAccount = function() {
     let selectedAccountData = localDataStorageFactory.selectedAccount;
