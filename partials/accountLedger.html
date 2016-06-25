@@ -56,9 +56,9 @@
         <div flex="10">Running Total <br>{{currentlySelectedAccount()}}</div>
         <div flex="10"></div>
       </div>
-        <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in accountItems" layout-align="end center" ng-init="wasClicked = false" >
+        <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in ledgerItems" layout-align="end center" ng-init="wasClicked = false" >
         <span flex="5"></span>
-          <md-button layout-align="start" ng-model="lineItem" ng-class="{'background-green': wasClicked === true}" ng-click="wasClicked = !wasClicked; onLedgerChecked(lineItem)" aria-label="Add2Check"><img style="width: 25px; margin: 0 auto 0 auto;" ng-src="{{wasClicked && 'img/checkmark.svg' || 'img/writer.svg'}}"></md-button>
+          <md-button layout-align="start" ng-class="{'background-green': wasClicked === true}" ng-click="wasClicked = !wasClicked; onLedgerChecked(lineItem)" aria-label="Add2Check"><img style="width: 25px; margin: 0 auto 0 auto;" ng-src="{{wasClicked && 'img/checkmark.svg' || 'img/writer.svg'}}"></md-button>
           <div flex="8" >{{lineItem.checkNum}}</div>
           <div flex="10">{{lineItem.checkDate}}</div>
           <div flex="20">{{lineItem.transaction}}</div>
@@ -66,7 +66,7 @@
           <div flex="10">{{lineItem.type}}</div>
           <div flex="10" ng-class="lineItem.type === 'Withdrawl' ? 'red-bold' : 'black-bold'">{{lineItem.checkAmount}}</div>
           <div flex="10">{{calcLineItemTotal(lineItem)}}</div>
-          <div flex="10"><img ng-src="img/edit.svg" style="width: 15px;" ng-model="lineItem" ng-click="editLineItem(lineItem)" aria-label="Edit Line Item"></div>
+          <div flex="10"><img ng-src="img/edit.svg" style="display: inline; margin-right: 15px; width: 15px;" ng-click="editLineItem(lineItem)" aria-label="Edit Line Item"><img ng-src="img/delete.svg" style="display: inline; width: 15px;" ng-click="deleteLineItem(lineItem)" aria-label="Delete Line Item"></div>
         </div>
     </md-card>
   </md-content>
