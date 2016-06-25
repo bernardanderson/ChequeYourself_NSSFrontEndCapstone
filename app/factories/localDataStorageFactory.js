@@ -4,6 +4,8 @@ app.factory("localDataStorageFactory", function(XHRFactory){
 
     currentAccounts: [],
 
+    currentLedgerItems: [],
+
     selectedAccount: [],
 
     selectedAccountLedgerItems: [],
@@ -17,6 +19,13 @@ app.factory("localDataStorageFactory", function(XHRFactory){
     addNewAccount: function(sentAccountInfo) {
       for (var singleAccount in sentAccountInfo) {
         this.currentAccounts.push(sentAccountInfo[singleAccount]);
+      }
+    },
+
+    // Adds all the ledger items, to this local array for manipulation 
+    addLedgerItems: function(sentLedgerInfo) {
+      for (var singleLedgerItem in sentLedgerInfo) {
+        this.currentLedgerItems.push(sentLedgerInfo[singleLedgerItem]);
       }
     },
 
@@ -41,9 +50,10 @@ app.factory("localDataStorageFactory", function(XHRFactory){
       this.addSelectedAccountLedgerItems(sentSelectedAccount.accountID)
     },
 
-    // Adds a single ledger item to the currently selected ledger array
+    // Adds a single ledger item to the complete list of ledger items
     addNewAccountLedgerItem: function(sentSingleLedgerItem) {
-      this.selectedAccountLedgerItems.push(sentSingleLedgerItem);
+      this.currentLedgerItems.push(sentSingleLedgerItem);
+      console.log(this.currentLedgerItems)
     },
 
     // After an account is selected, this pulls the ledger items and adds the
@@ -52,14 +62,12 @@ app.factory("localDataStorageFactory", function(XHRFactory){
 
       this.selectedAccountLedgerItems.splice(0);
 
-      XHRFactory.pullXHRData("json/basicData.json").then( response => {
-        let lineItemObj = response.data.lineItems;
+        let lineItemObj = this.currentLedgerItems;
         for (var item in lineItemObj) {
           if (lineItemObj[item].accountID === sentAccountID) {
             this.selectedAccountLedgerItems.push(lineItemObj[item]);
           }
         }
-      })
     },
 
     // This generates a complex unique ID for various purposes

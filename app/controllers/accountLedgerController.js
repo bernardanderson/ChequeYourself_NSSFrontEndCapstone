@@ -2,14 +2,11 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   navBarFactory.changeNavBarTitle("Account Ledger");
 
-  // Clears any LedgerItems on page load
-  localDataStorageFactory.selectedAccountLedgerItems.splice(0);
-
-  $scope.accountItems = localDataStorageFactory.selectedAccountLedgerItems;
-
   $scope.newSingleLineItem = {};
 
-  // $scope.selectedAccountCurrentAmount = 0;
+  localDataStorageFactory.selectedAccount.splice(0);
+
+  $scope.ledgerItems = [];
 
   // Resets the editting mode to false when returning to the Account Ledger
   localDataStorageFactory.isEditClick = false;
@@ -18,7 +15,7 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
   localDataStorageFactory.selectedLineItemsForPrint.splice(0);
 
   // Checks to see if the user has created at least one account, if not, they can only add an account instead of adding/editing.
-  if (localDataStorageFactory.currentAccounts.length === 0) {
+  if (localDataStorageFactory.currentAccounts.length === 0 ) {
     navBarFactory.setNavButtons(
       [{
         buttonLabel: "Add New Account",
@@ -37,6 +34,35 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
         viewChange: "addNewAccount"
       }]
     );
+  }
+
+  // On account change this gets run and clears the $scope.ledgerItems array for 
+  //  the singally selected Account and repopulates it with ledger items for that 
+  //  new account
+  $scope.accountItems = function() {
+
+    let completeLedgerList = localDataStorageFactory.currentLedgerItems;
+    $scope.ledgerItems.splice(0);
+
+    if (localDataStorageFactory.selectedAccount.length > 0) {
+      for (singleItem in completeLedgerList) {
+        if (completeLedgerList[singleItem].accountID === localDataStorageFactory.selectedAccount[0].accountID) {
+          $scope.ledgerItems.push(completeLedgerList[singleItem]);
+        };
+      }
+    }
+  }
+
+  // Deletes a single ledger item from the currentLedgerItems array
+  $scope.deleteLineItem = function(sentCurrentLineItem) {
+
+    let completeLedgerList = localDataStorageFactory.currentLedgerItems;
+    for (singleItem in completeLedgerList) {
+      if (completeLedgerList[singleItem].lineItemID === sentCurrentLineItem.lineItemID) {
+        completeLedgerList.splice(singleItem, 1);
+        break;
+      };
+    }
   }
 
   // Gets the starting account amount for displaying on the Account Ledger Page
@@ -77,11 +103,11 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     if (sentLineItem.lineItemID) {
       
       let lineItemID = sentLineItem.lineItemID;
-      
-      for (var element in localDataStorageFactory.selectedAccountLedgerItems) {
-        if (localDataStorageFactory.selectedAccountLedgerItems[element].lineItemID === lineItemID) {
+      for (var element in localDataStorageFactory.currentLedgerItems) {
+        if (localDataStorageFactory.currentLedgerItems[element].lineItemID === lineItemID) {
           sentLineItem.checkAmount = localDataStorageFactory.formatNumbersToCurrencyString(sentLineItem.checkAmount);
-          localDataStorageFactory.selectedAccountLedgerItems[element] = sentLineItem;
+          localDataStorageFactory.currentLedgerItems[element] = sentLineItem;
+          $scope.accountItems();
           break;
         }
       }
@@ -120,9 +146,15 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     console.log("localDataStorageFactory.selectedAccount.length: ", newVal.length);
     if (newVal.length > 0){
       $scope.disableNewLedgerAddition = false;
+      $scope.accountItems();
     } else {
       $scope.disableNewLedgerAddition = true;
     }
+  });
+
+  // This watches for a change in the currentLedger items and updates the ledger list
+  $scope.$watchCollection(function() {return localDataStorageFactory.currentLedgerItems}, function(newVal, oldVal) {
+    $scope.accountItems();
   });
 
 });
