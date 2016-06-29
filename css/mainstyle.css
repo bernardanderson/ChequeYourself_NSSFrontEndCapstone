@@ -14,6 +14,10 @@ img:focus {
   border: 0;
 }
 
+.hint {
+  font-size: 8pt;
+}
+
 .red-bold {
   color: red;
   font-weight: bold;

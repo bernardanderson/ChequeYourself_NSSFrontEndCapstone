@@ -2,6 +2,8 @@ app.factory("localDataStorageFactory", function(XHRFactory){
 
   return {
 
+    parsedLoadedData: "",
+
     currentAccounts: [],
 
     currentLedgerItems: [],
