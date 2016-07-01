@@ -1,12 +1,11 @@
 // This controller handles all aspects of the File Save/Load Screen
 app.controller("fileSaveLoadController", function($scope, navBarFactory, localDataStorageFactory, FileSaver, FileHandlerFactory){
 
-  navBarFactory.changeNavBarTitle("Save/Load a File");
+  navBarFactory.changeNavBarTitle("Data Access");
   navBarFactory.setNavButtons([]);
 
   // Holds the info from the login input box
   $scope.login = {
-    userName: null,
     userPassword: null,
     saveFileName: null
   };
@@ -21,10 +20,10 @@ app.controller("fileSaveLoadController", function($scope, navBarFactory, localDa
   // Checks to see if the file selected is a valid "Cheque-Yourself.com" save file
   $scope.checkLoadFile = function($fileContent){
 
-    let loadSubString = $fileContent.substr(45, 19);
+    let loadSubString = $fileContent.substr(23, 19);
 
       if (loadSubString === "Cheque-Yourself.com") {
-        $scope.filemsgs.returnedLoadMessage =  "Valid File Loaded";
+        $scope.filemsgs.returnedLoadMessage =  "Valid File Selected";
         $scope.disableLoad = false;
         FileHandlerFactory.storeLoadedData($fileContent);
       } else {
@@ -36,9 +35,9 @@ app.controller("fileSaveLoadController", function($scope, navBarFactory, localDa
   //  the factory is called to save the file.
   $scope.saveFile = function(sentLogin) {
 
-    if (sentLogin.userName && sentLogin.userPassword && sentLogin.saveFileName) {
+    if (sentLogin.userPassword && sentLogin.saveFileName) {
       $scope.filemsgs.returnedSaveMessage = "Valid Info!"
-      FileHandlerFactory.fileSaving(sentLogin)
+      FileHandlerFactory.fileSaving(sentLogin);
     } else {
       $scope.filemsgs.returnedSaveMessage = "Please enter a valid User Name, Password and File Name"
     }
@@ -46,6 +45,10 @@ app.controller("fileSaveLoadController", function($scope, navBarFactory, localDa
 
   $scope.loadFile = function(sentLogin) {
     FileHandlerFactory.decryptAddToArrays(sentLogin);
+  }
+
+  $scope.quickCheck = function(sentData) {
+    return sjcl.encrypt(sentData);
   }
 
 });

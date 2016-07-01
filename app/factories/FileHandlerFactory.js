@@ -12,7 +12,7 @@ app.factory("FileHandlerFactory", function(FileSaver, localDataStorageFactory){
     fileSaving: function(sentLoginInfo) {
 
       let saveObject = {
-        softwareTitle: "## Valid save file for Cheque-Yourself.com ##",
+        // softwareTitle: "## Valid save file for Cheque-Yourself.com ##",
         accounts: {},
         lineItems: {}
       };
@@ -25,23 +25,24 @@ app.factory("FileHandlerFactory", function(FileSaver, localDataStorageFactory){
         saveObject.lineItems['item'+i] = localDataStorageFactory.currentLedgerItems[i];
       }
 
-      let saveObjectStringified = angular.toJson(saveObject, true);
+      let encryptedSaveFile = "## Valid save file for Cheque-Yourself.com ##" + sjcl.encrypt(sentLoginInfo.userPassword, angular.toJson(saveObject, true));
 
-      var blob = new Blob([saveObjectStringified], {type: 'text/plain;charset=utf-8'});
+      var blob = new Blob([encryptedSaveFile], {type: 'text/plain;charset=utf-8'});
       FileSaver(blob, sentLoginInfo.saveFileName);
     },
 
     // This stores any valid loaded file data in a temporary variable before decryption
     storeLoadedData: function(sentFileInfo){
       this.loadedData.splice(0);
-      let objectFileData = angular.fromJson(sentFileInfo);
-      this.loadedData.push(objectFileData);
-      console.log("Loaded Data: ", this.loadedData[0]);
+      sentFileInfo = sentFileInfo.substring(45);
+      this.loadedData.push(sentFileInfo); 
     },
 
+    // Once a password is added, this decrypts the data and adds it to the local arrays
     decryptAddToArrays: function(sentLoginInfo) {
-      localDataStorageFactory.addNewAccount(this.loadedData[0].accounts);
-      localDataStorageFactory.addLedgerItems(this.loadedData[0].lineItems);
+      let decryptedAccountInfo = angular.fromJson(sjcl.decrypt(sentLoginInfo.userPassword, this.loadedData[0]));
+      localDataStorageFactory.addNewAccount(decryptedAccountInfo.accounts);
+      localDataStorageFactory.addLedgerItems(decryptedAccountInfo.lineItems);
     }
 
   }
