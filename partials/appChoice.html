@@ -1,22 +1,27 @@
-<md-content class="md-padding" layout-xs="column" layout="row">
-  <div flex-xs flex-gt-xs="50">
-    <md-card ng-click="clickedChoice('accountLedger')">
-      <md-card-title>
-        <md-card-title-text layout-align="center center">
-          <span class="md-headline">Account Ledger</span>
-          <span class="md-subhead">Full-featured Account Ledger</span>
-        </md-card-title-text>
-      </md-card-title>
+  <md-content class="md-padding" layout="row">
+    <div flex-xs flex-gt-xs="50">
+      <md-card ng-click="clickedChoice('accountLedger')">
+        <md-card-title>
+          <md-card-title-text layout-align="center center">
+            <span class="md-headline">Account Ledger</span>
+            <span class="md-subhead">Full-featured Account Ledger</span>
+          </md-card-title-text>
+        </md-card-title>
+      </md-card>
+    </div> 
+    <div flex-xs flex-gt-xs="50">
+      <md-card ng-click="clickedChoice('chequeWriter')"> 
+        <md-card-title>
+          <md-card-title-text layout-align="center center">
+            <span class="md-headline">Check Writer</span>
+            <span class="md-subhead">Interactive Check Builder</span>
+          </md-card-title-text>
+        </md-card-title>
+      </md-card>
+    </div>
+  </md-content>
+  <md-content layout="row" layout-align="center center">
+    <md-card style="background-color: lightgray;" flex="50" layout-align="center center" ng-click="clickedChoice('fileSaveLoad')">
+      <p>Click Here to Load a Saved Instance</p>
     </md-card>
-  </div> 
-  <div flex-xs flex-gt-xs="50">
-    <md-card ng-click="clickedChoice('chequeWriter')"> 
-      <md-card-title>
-        <md-card-title-text layout-align="center center">
-          <span class="md-headline">Check Writer</span>
-          <span class="md-subhead">Interactive Check Builder</span>
-        </md-card-title-text>
-      </md-card-title>
-    </md-card>
-  </div>
-</md-content>
+  </md-content>

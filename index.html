@@ -18,28 +18,33 @@
     <div ng-if="currentView === 'accountLedger'" ng-include="'./partials/accountLedger.html'" ng-controller="accountLedgerController"></div>
     <div ng-if="currentView === 'chequeWriter'" ng-include="'./partials/chequeWriter.html'" ng-controller="checkBuilderAJs"></div>
     <div ng-if="currentView === 'addNewAccount'" ng-include="'./partials/newAccount.html'" ng-controller="newAccountController"></div>
+    <div ng-if="currentView === 'fileSaveLoad'" ng-include="'./partials/fileSaveLoad.html'" ng-controller="fileSaveLoadController"></div>
   </div>
 </div>
 
   <!-- Framework Libraries -->
   <script type="text/javascript" src="./lib/bower_components/angular/angular.js"></script>
-  <script type="text/javascript" src="./lib/bower_components/angular-route/angular-route.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-animate/angular-animate.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-aria/angular-aria.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-messages/angular-messages.js"></script>
   <script type="text/javascript" src="./lib/bower_components/angular-material/angular-material.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/angular-filesaver/angular-filesaver.js"></script>
+  <script type="text/javascript" src="./lib/bower_components/file-saver/file-saver.js"></script>
 
   <!-- My Code -->
   <script type="text/javascript" src="./app/app.js"></script>
   <script type="text/javascript" src="./app/factories/XHRFactory.js"></script>
   <script type="text/javascript" src="./app/factories/navBarFactory.js"></script>
   <script type="text/javascript" src="./app/factories/localDataStorageFactory.js"></script>
+  <script type="text/javascript" src="./app/factories/FileHandlerFactory.js"></script>
   <script type="text/javascript" src="./app/controllers/checkBuilderAJs.js"></script>
   <script type="text/javascript" src="./app/controllers/navBarController.js"></script>
   <script type="text/javascript" src="./app/controllers/newAccountController.js"></script>
   <script type="text/javascript" src="./app/controllers/appChoiceController.js"></script>
   <script type="text/javascript" src="./app/controllers/accountLedgerController.js"></script>
+  <script type="text/javascript" src="./app/controllers/fileSaveLoadController.js"></script>
   <script type="text/javascript" src="./app/directives/draggableElements.js"></script>
   <script type="text/javascript" src="./app/directives/domElementLibrary.js"></script>
+  <script type="text/javascript" src="./app/directives/onReadFile.js"></script>
 </body>
 </html>
