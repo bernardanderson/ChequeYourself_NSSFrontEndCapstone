@@ -1,7 +1,7 @@
 // This controller handles all aspects of the File Save/Load Screen
 app.controller("fileSaveLoadController", function($scope, navBarFactory, localDataStorageFactory, FileSaver, FileHandlerFactory){
 
-  navBarFactory.changeNavBarTitle("Save/Load a File");
+  navBarFactory.changeNavBarTitle("Data Access");
   navBarFactory.setNavButtons([]);
 
   // Holds the info from the login input box
