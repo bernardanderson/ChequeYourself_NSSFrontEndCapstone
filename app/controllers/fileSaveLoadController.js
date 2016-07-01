@@ -1,22 +1,51 @@
-// The splash page buttons
-app.controller("fileSaveLoadController", function($scope, navBarFactory, XHRFactory, localDataStorageFactory, FileSaver, FileHandlerFactory){
+// This controller handles all aspects of the File Save/Load Screen
+app.controller("fileSaveLoadController", function($scope, navBarFactory, localDataStorageFactory, FileSaver, FileHandlerFactory){
+
+  navBarFactory.changeNavBarTitle("Save/Load a File");
+  navBarFactory.setNavButtons([]);
 
   // Holds the info from the login input box
-  $scope.login = {};
-
-  $scope.showContent = function($fileContent){
-
-    localDataStorageFactory.testForValidFile
-    try {
-        angular.fromJson($fileContent);
-    } catch (e) {
-        console.log("Not a valid Json File");
-    }
-        console.log("Is a valid Json File");
-
-    // localDataStorageFactory.loadedData = angular.fromJson($fileContent);
-    // console.log(localDataStorageFactory.loadedData);
-    // console.log(localDataStorageFactory.loadedData);
+  $scope.login = {
+    userName: null,
+    userPassword: null,
+    saveFileName: null
   };
+
+  // Holds the file load/save messages
+  $scope.filemsgs = {};
+
+  // Holds to enable the load file button
+  $scope.disableLoad = true;
+
+
+  // Checks to see if the file selected is a valid "Cheque-Yourself.com" save file
+  $scope.checkLoadFile = function($fileContent){
+
+    let loadSubString = $fileContent.substr(45, 19);
+
+      if (loadSubString === "Cheque-Yourself.com") {
+        $scope.filemsgs.returnedLoadMessage =  "Valid File Loaded";
+        $scope.disableLoad = false;
+        FileHandlerFactory.storeLoadedData($fileContent);
+      } else {
+        $scope.filemsgs.returnedLoadMessage =  "This is not a valid Cheque-Yourself! save file.";
+      }
+  };
+
+  // Checks to see if a user has entered in both a user name, password and filename for saving.  If so, then
+  //  the factory is called to save the file.
+  $scope.saveFile = function(sentLogin) {
+
+    if (sentLogin.userName && sentLogin.userPassword && sentLogin.saveFileName) {
+      $scope.filemsgs.returnedSaveMessage = "Valid Info!"
+      FileHandlerFactory.fileSaving(sentLogin)
+    } else {
+      $scope.filemsgs.returnedSaveMessage = "Please enter a valid User Name, Password and File Name"
+    }
+  }
+
+  $scope.loadFile = function(sentLogin) {
+    FileHandlerFactory.decryptAddToArrays(sentLogin);
+  }
 
 });

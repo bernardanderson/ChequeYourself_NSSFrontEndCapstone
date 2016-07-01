@@ -24,23 +24,23 @@
           <label>Save File Name</label>
           <input ng-model="login.saveFileName" type="text" />
         </md-input-container>
-          <md-button class="md-raised md-warn md-hue-2" ng-click="saveFileButton(login)">Save File</md-button>
+          <md-button class="md-raised md-warn md-hue-2" ng-click="saveFile(login)">Save File</md-button>
         </div>
         <div layout="row">
           <span flex="5"></span>
-          <p>Save Message: {{returnedLoadMessage}}</p>
+          <p>Save Message: {{filemsgs.returnedSaveMessage}}</p>
         </div>
       </div>
     </md-card>
     <md-card flex="45">
       <div layout="column">
         <div layout="row" layout-align="center center" >
-          <input type="file" on-read-file="showContent($fileContent)" />
-          <md-button class="md-raised md-warn md-hue-2" ng-click="loadFileButton(login)">Load File</md-button>
+          <input type="file" on-read-file="checkLoadFile($fileContent)" />
+          <md-button class="md-raised md-warn md-hue-2" ng-disabled="disableLoad" ng-click="loadFile(login)">Load File</md-button>
         </div>
         <div layout="row">
           <span flex="5"></span>
-          <p>Load Message: {{returnedLoadMessage}}</p>
+          <p>Load Message: {{filemsgs.returnedLoadMessage}}</p>
         </div>
       </div>
     </md-card>
