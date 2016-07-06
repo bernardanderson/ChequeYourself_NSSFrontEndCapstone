@@ -1,3 +1,5 @@
+"use strict";
+
 app.factory("FileHandlerFactory", function(FileSaver, localDataStorageFactory){
 
   return {
@@ -18,11 +20,11 @@ app.factory("FileHandlerFactory", function(FileSaver, localDataStorageFactory){
       };
 
       for (var i = 0; i < localDataStorageFactory.currentAccounts.length; i++) {
-        saveObject.accounts['account'+i] = localDataStorageFactory.currentAccounts[i];
+        saveObject.accounts['account' + i] = localDataStorageFactory.currentAccounts[i];
       }
 
-      for (var i = 0; i < localDataStorageFactory.currentLedgerItems.length; i++) {
-        saveObject.lineItems['item'+i] = localDataStorageFactory.currentLedgerItems[i];
+      for (var j = 0; j < localDataStorageFactory.currentLedgerItems.length; j++) {
+        saveObject.lineItems['item' + j] = localDataStorageFactory.currentLedgerItems[j];
       }
 
       let encryptedSaveFile = "## Valid save file for Cheque-Yourself.com ##" + sjcl.encrypt(sentLoginInfo.userPassword, angular.toJson(saveObject, true));
@@ -45,6 +47,6 @@ app.factory("FileHandlerFactory", function(FileSaver, localDataStorageFactory){
       localDataStorageFactory.addLedgerItems(decryptedAccountInfo.lineItems);
     }
 
-  }
+  };
   
 });

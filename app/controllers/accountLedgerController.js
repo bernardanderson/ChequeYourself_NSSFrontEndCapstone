@@ -1,3 +1,5 @@
+"use strict";
+
 app.controller("accountLedgerController", function($scope, navBarFactory, localDataStorageFactory){
 
   navBarFactory.changeNavBarTitle("Account Ledger");
@@ -45,25 +47,25 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     $scope.ledgerItems.splice(0);
 
     if (localDataStorageFactory.selectedAccount.length > 0) {
-      for (singleItem in completeLedgerList) {
+      for (var singleItem in completeLedgerList) {
         if (completeLedgerList[singleItem].accountID === localDataStorageFactory.selectedAccount[0].accountID) {
           $scope.ledgerItems.push(completeLedgerList[singleItem]);
-        };
+        }
       }
     }
-  }
+  };
 
   // Deletes a single ledger item from the currentLedgerItems array
   $scope.deleteLineItem = function(sentCurrentLineItem) {
 
     let completeLedgerList = localDataStorageFactory.currentLedgerItems;
-    for (singleItem in completeLedgerList) {
+    for (var singleItem in completeLedgerList) {
       if (completeLedgerList[singleItem].lineItemID === sentCurrentLineItem.lineItemID) {
         completeLedgerList.splice(singleItem, 1);
         break;
-      };
+      }
     }
-  }
+  };
 
   // Gets the starting account amount for displaying on the Account Ledger Page
   $scope.currentlySelectedAccount = function() {
@@ -74,7 +76,7 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     } else {
       return "(No Account Selected)";
     }
-  }
+  };
 
   // Calculates the current line item total as the ledger ng-repeat is displaying the line items
   //  It strips the "string" checkValue to numbers (keeping the decimal) and converts to string to a floating point
@@ -90,7 +92,7 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
       $scope.selectedAccountStartingAmount = $scope.selectedAccountStartingAmount + currentLineItemAmount;
     }
     return `$${$scope.selectedAccountStartingAmount.toFixed(2)}`;
-  }
+  };
 
   // When the "Add to Ledger" button is clicked to add a new line item to the ledger, this is used to add a 
   //  single item to the localDataStorageFactory selectedAccountLedgerItems array.
@@ -116,17 +118,17 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     let tempLineItemID = localDataStorageFactory.generateUniqueId();
     sentLineItem.lineItemID = tempLineItemID;
     
-    sentLineItem.accountID = localDataStorageFactory.selectedAccount[0].accountID
+    sentLineItem.accountID = localDataStorageFactory.selectedAccount[0].accountID;
     sentLineItem.checkAmount = localDataStorageFactory.formatNumbersToCurrencyString(sentLineItem.checkAmount);
     localDataStorageFactory.addNewAccountLedgerItem(sentLineItem);
     }
 
     $scope.newSingleLineItem = {}; // Clears the newSingleLineItem inputs on the DOM
-  }
+  };
 
   $scope.editLineItem = function(sentLineItem) {
     $scope.newSingleLineItem = sentLineItem;
-  }
+  };
 
   // When an ledger item is checked this either adds it to the array of things to print a check of or removes it from the
   //  the array.
@@ -139,10 +141,10 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     } else {
       localDataStorageFactory.selectedLineItemsForPrint.splice(indexOfSentLedgerItem, 1);
     }
-  }
+  };
 
   //Watches for selection in the navBar selected account list
-  $scope.$watchCollection(function() {return localDataStorageFactory.selectedAccount}, function(newVal, oldVal) {
+  $scope.$watchCollection(function() {return localDataStorageFactory.selectedAccount;}, function(newVal, oldVal) {
     console.log("localDataStorageFactory.selectedAccount.length: ", newVal.length);
     if (newVal.length > 0){
       $scope.disableNewLedgerAddition = false;
@@ -153,7 +155,7 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
   });
 
   // This watches for a change in the currentLedger items and updates the ledger list
-  $scope.$watchCollection(function() {return localDataStorageFactory.currentLedgerItems}, function(newVal, oldVal) {
+  $scope.$watchCollection(function() {return localDataStorageFactory.currentLedgerItems;}, function(newVal, oldVal) {
     $scope.accountItems();
   });
 

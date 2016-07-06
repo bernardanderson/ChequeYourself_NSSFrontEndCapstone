@@ -1,3 +1,5 @@
+"use strict";
+
 // The splash page buttons
 app.controller("appChoiceController", function($scope, navBarFactory, XHRFactory, localDataStorageFactory, FileSaver){
 
@@ -5,7 +7,7 @@ app.controller("appChoiceController", function($scope, navBarFactory, XHRFactory
 
   $scope.clickedChoice = function(sentChoice) {
     navBarFactory.setCurrentView(sentChoice);
-  }
+  };
 
 
 });

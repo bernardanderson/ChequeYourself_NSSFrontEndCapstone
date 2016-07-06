@@ -1,3 +1,4 @@
+"use strict";
 
 // This directive allows the loading and parsing of a text file.
 //  Borrowed from: http://jsfiddle.net/alexsuch/6aG4x/535/

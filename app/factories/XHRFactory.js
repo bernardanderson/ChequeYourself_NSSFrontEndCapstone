@@ -1,3 +1,5 @@
+"use strict";
+
 app.factory("XHRFactory", function($http){
 
   return {
@@ -5,8 +7,8 @@ app.factory("XHRFactory", function($http){
     // Pulls the Check Data Entry Fields from the json file and returns the completed 
     //  promise data as X.data
     pullXHRData: function(sentLocation) {
-      return $http.get(sentLocation)
+      return $http.get(sentLocation);
     }
-  }
+  };
   
 });

@@ -1,3 +1,5 @@
+"use strict";
+
 app.factory("localDataStorageFactory", function(XHRFactory){
 
   return {
@@ -49,13 +51,13 @@ app.factory("localDataStorageFactory", function(XHRFactory){
     addSelectedAccount: function(sentSelectedAccount) {
       this.selectedAccount.splice(0);
       this.selectedAccount.push(sentSelectedAccount);
-      this.addSelectedAccountLedgerItems(sentSelectedAccount.accountID)
+      this.addSelectedAccountLedgerItems(sentSelectedAccount.accountID);
     },
 
     // Adds a single ledger item to the complete list of ledger items
     addNewAccountLedgerItem: function(sentSingleLedgerItem) {
       this.currentLedgerItems.push(sentSingleLedgerItem);
-      console.log(this.currentLedgerItems)
+      console.log(this.currentLedgerItems);
     },
 
     // After an account is selected, this pulls the ledger items and adds the
@@ -81,6 +83,6 @@ app.factory("localDataStorageFactory", function(XHRFactory){
       });
       return tempUUID;
     }
-  }
+  };
 
 });

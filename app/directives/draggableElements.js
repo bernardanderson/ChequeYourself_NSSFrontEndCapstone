@@ -1,3 +1,5 @@
+"use strict";
+
 // This directive allows draggability, borrowed from:
 //  https://siongui.github.io/2013/04/04/angularjs-draggable-movable-element/
 

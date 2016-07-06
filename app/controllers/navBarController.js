@@ -1,3 +1,5 @@
+"use strict";
+
 // This simply assigns a navbar heading to a angular url
 
 app.controller("navBarController", function($scope, navBarFactory, localDataStorageFactory){
@@ -13,7 +15,7 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
   // Var for if the speedDial is open by default
   $scope.speedDial = {
     isOpen: false,
-  }
+  };
 
   // Var for whether the user has at least one account on file
   $scope.atLeastOneAccount = false;
@@ -21,7 +23,7 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
   // This is exclusively for the initial appChoice view page
   $scope.clickedChoice = function(sentNewView, sentParameters) {
 
-    console.log("Clicked Choice: ", sentNewView, sentParameters)
+    console.log("Clicked Choice: ", sentNewView, sentParameters);
     if (sentParameters === "Edit") {
       localDataStorageFactory.isEditClick = true;
     } else if (sentParameters === "ClearChecks") {
@@ -30,7 +32,7 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
       print();
     }
     navBarFactory.setCurrentView(sentNewView);
-  }
+  };
 
   // When an account is selected in the navBar on the displayLedger Page, this executes
   //  Updates the localDataStorageFactory variable selectedAccount
@@ -38,20 +40,20 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
       if (sentSelectedAccount !== undefined) {
       localDataStorageFactory.addSelectedAccount(sentSelectedAccount);
     }
-  }
+  };
 
   //Watches for any click changes in the current "Main Page" view
-  $scope.$watch(function() {return navBarFactory.currentView}, function(newVal, oldVal) {
+  $scope.$watch(function() {return navBarFactory.currentView;}, function(newVal, oldVal) {
     console.log(oldVal, newVal);
     if (newVal !== undefined){
       $scope.currentView = newVal;
-      console.log("The current view in navBarController: ", $scope.currentView)
+      console.log("The current view in navBarController: ", $scope.currentView);
     }
   });
 
   // This may not be needed due to the ng-repeat
   //Watches for changes in the current accounts list
-  $scope.$watchCollection(function() {return localDataStorageFactory.currentAccounts}, function(newVal, oldVal) {
+  $scope.$watchCollection(function() {return localDataStorageFactory.currentAccounts;}, function(newVal, oldVal) {
     // console.log("newVal.length: ", newVal.length);
     if (newVal.length === 0){
       $scope.atLeastOneAccount = false;

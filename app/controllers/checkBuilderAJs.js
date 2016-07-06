@@ -1,3 +1,5 @@
+"use strict";
+
 app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, localDataStorageFactory){
 
   navBarFactory.changeNavBarTitle("Cheque Builder!");
@@ -25,7 +27,7 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
   // Changes the status of the hidden/shown elements in the movable check elements
   $scope.changeHide = function(sentChange) {
     $scope.hideElement = !$scope.hideElement;
-  }
+  };
 
   // The current number of checks to loop through
   $scope.numberOfChecks = [0, 1, 2];
@@ -59,7 +61,7 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
           userAddress: `${$scope.selectedAccount[0].userName}\n` +
                        `${$scope.selectedAccount[0].userStreet}\n` +
                        `${$scope.selectedAccount[0].userCity}, ${$scope.selectedAccount[0].userState} ${$scope.selectedAccount[0].userZip}`,
-        })
+        });
     }
     
   } else {
@@ -72,11 +74,11 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
       checkAmount: null,
       checkPayee: null,
       userAddress: null
-    }
+    };
   }
 
   // Watcher for the click of the "Clear Checks" button
-  $scope.$watchCollection(function() {return localDataStorageFactory.selectedLineItemsForPrint}, function(newVal, oldVal) {
+  $scope.$watchCollection(function() {return localDataStorageFactory.selectedLineItemsForPrint;}, function(newVal, oldVal) {
     console.log("newVal.length: ", newVal.length);
     console.log("newVal: ", newVal);
     if (newVal.length === 0){
@@ -88,7 +90,7 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
         checkNumber: null,
         checkAmount: null,
         checkPayee: null
-      }
+      };
     }
   });
 });
