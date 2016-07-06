@@ -1,3 +1,5 @@
+"use strict";
+
 app.factory("navBarFactory", function(){
 
   return {
@@ -25,8 +27,8 @@ app.factory("navBarFactory", function(){
       this.navButtons.splice(0);
       for (var element in sentNavButtons) {
         this.navButtons.push(sentNavButtons[element]);
-      };
+      }
     }
-  }
+  };
 
 });

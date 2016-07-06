@@ -1,5 +1,6 @@
-app.controller("newAccountController", function($scope, navBarFactory, localDataStorageFactory){
+"use strict";
 
+app.controller("newAccountController", function($scope, navBarFactory, localDataStorageFactory){
 
   navBarFactory.setNavButtons([
     {
@@ -70,7 +71,7 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
       accountNumber: sentNewAccount.accountNumber,
       comments: sentNewAccount.comments,
       startingAmount: parseFloat(sentNewAccount.startingAmount)
-    }
+    };
 
     // Checks to see if the user is editing an account or adding a new account.  If editing, it keeps the accountID
     //  the same so the ledger items aren't lost
@@ -85,7 +86,7 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
     localDataStorageFactory.isEditClick = false;
     console.log("Result of newAccount in localDataStorage: ", localDataStorageFactory.currentAccounts);
     navBarFactory.setCurrentView('accountLedger');
-  }
+  };
 
   // Deletes an account by cycling through the ledger items and deleting them based
   //  on accountID and then deletes the actual account based on accountID
@@ -94,19 +95,19 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
     let completeLedgerList = localDataStorageFactory.currentLedgerItems;
     let completeAccountList = localDataStorageFactory.currentAccounts;
 
-    for (singleItem in completeLedgerList) {
+    for (var singleItem in completeLedgerList) {
       if (completeLedgerList[singleItem].accountID === sentNewAccount.accountID) {
         completeLedgerList.splice(singleItem,1);
       }
     }
 
-    for (singleAccount in completeAccountList) {
+    for (var singleAccount in completeAccountList) {
       if (completeAccountList[singleAccount].accountID === sentNewAccount.accountID) {
         completeAccountList.splice(singleAccount,1);
       }
     }
     
     navBarFactory.setCurrentView('accountLedger');
-  }
+  };
 
 });

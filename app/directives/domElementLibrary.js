@@ -1,3 +1,5 @@
+"use strict";
+
 // List of directives for the creation of custom check fields, directives inherit the scope 
 //  from the parent controller they're housed in.
 

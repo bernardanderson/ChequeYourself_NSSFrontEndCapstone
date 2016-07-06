@@ -1,3 +1,5 @@
+"use strict";
+
 // This controller handles all aspects of the File Save/Load Screen
 app.controller("fileSaveLoadController", function($scope, navBarFactory, localDataStorageFactory, FileSaver, FileHandlerFactory){
 
@@ -36,19 +38,19 @@ app.controller("fileSaveLoadController", function($scope, navBarFactory, localDa
   $scope.saveFile = function(sentLogin) {
 
     if (sentLogin.userPassword && sentLogin.saveFileName) {
-      $scope.filemsgs.returnedSaveMessage = "Valid Info!"
+      $scope.filemsgs.returnedSaveMessage = "Valid Info!";
       FileHandlerFactory.fileSaving(sentLogin);
     } else {
-      $scope.filemsgs.returnedSaveMessage = "Please enter a valid User Name, Password and File Name"
+      $scope.filemsgs.returnedSaveMessage = "Please enter a valid User Name, Password and File Name";
     }
-  }
+  };
 
   $scope.loadFile = function(sentLogin) {
     FileHandlerFactory.decryptAddToArrays(sentLogin);
-  }
+  };
 
   $scope.quickCheck = function(sentData) {
     return sjcl.encrypt(sentData);
-  }
+  };
 
 });
