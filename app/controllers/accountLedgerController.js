@@ -10,6 +10,8 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   $scope.ledgerItems = [];
 
+  $scope.categories = ["Home", "Utilities", "Entertainment", "Misc"];
+
   // Resets the editting mode to false when returning to the Account Ledger
   localDataStorageFactory.isEditClick = false;
 

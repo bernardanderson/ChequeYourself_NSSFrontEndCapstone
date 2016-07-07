@@ -1,74 +1,95 @@
-<div>
-  <md-content md-theme="special-input" layout-gt-sm="row" layout-align="center" layout-padding class="new-transaction-input">
-  <h5 flex="10">New Entry Item</h5>
-  <md-input-container flex="5">
-    <label class="sm-font">Check #</label>
-    <input ng-model="newSingleLineItem.checkNum">
-  </md-input-container>
-  <md-input-container flex="10">
-    <label class="sm-font">Date</label>
-    <input ng-model="newSingleLineItem.checkDate">
-  </md-input-container>
-  <md-input-container flex="17">
-    <label class="sm-font">Transaction Description</label>
-    <input ng-model="newSingleLineItem.transaction">
-  </md-input-container>
-  <md-input-container flex="10">
-    <label class="sm-font">Category (Optional)</label>
-    <input ng-model="newSingleLineItem.category">
-  </md-input-container>
-  <md-input-container flex="10">
-    <label class="sm-font">Memo</label>
-    <input ng-model="newSingleLineItem.memo">
-  </md-input-container>
-  <md-input-container>
-    <label class="sm-font" flex="5">Amount</label>
-    <input ng-model="newSingleLineItem.checkAmount">
-  </md-input-container>
-  <md-input-container flex="10">
-    <label>Type</label>
-    <md-select ng-model="newSingleLineItem.type">
-      <md-option value="Withdrawl">Withdrawl</md-option>
-      <md-option value="Deposit">Deposit</md-option>
-    </md-select>
-  </md-input-container>
-  <md-button class="md-raised md-warn add-ledger-btn" ng-disabled="disableNewLedgerAddition" ng-click="addNewLineItem()">Add-2-Ledger</md-button>
-  </md-content>
-</div>
+<md-content>
+  <md-tabs md-dynamic-height="true">
+    <md-tab label="Ledger">
+      <md-content md-theme="special-input" layout="row" layout-align="center" layout-padding class="new-transaction-input">
+      <h5 flex="10">New Entry Item</h5>
+      <md-input-container flex="5">
+        <label class="sm-font">Date</label>
+        <input ng-model="newSingleLineItem.checkDate">
+      </md-input-container>
+      <md-input-container flex="5">
+        <label class="sm-font">Check #</label>
+        <input ng-model="newSingleLineItem.checkNum">
+      </md-input-container>
+      <md-input-container flex="17">
+        <label class="sm-font">Transaction Description</label>
+        <input ng-model="newSingleLineItem.transaction">
+      </md-input-container>
+      <md-input-container flex="15">
+        <md-select ng-model="newSingleLineItem.category">
+          <label class="sm-font">Category</label>
+          <md-option ng-repeat="singleCategory in categories" value="{{singleCategory}}">
+            {{singleCategory}}
+          </md-option>
+        </md-select>
+      </md-input-container>
+      <md-input-container flex="10">
+        <label class="sm-font">Memo</label>
+        <input ng-model="newSingleLineItem.memo">
+      </md-input-container>
+      <md-input-container>
+        <label class="sm-font" flex="5">Amount</label>
+        <input ng-model="newSingleLineItem.checkAmount">
+      </md-input-container>
+      <md-input-container flex="10">
+        <label>Type</label>
+        <md-select ng-model="newSingleLineItem.type">
+          <md-option value="Withdrawl">Withdrawl</md-option>
+          <md-option value="Deposit">Deposit</md-option>
+        </md-select>
+      </md-input-container>
+      <md-button class="md-raised md-warn add-ledger-btn" ng-disabled="disableNewLedgerAddition" ng-click="addNewLineItem()">Add-2-Ledger</md-button>
+      </md-content>
 
-<div>
-  <md-content class="md-padding" layout="column">
-    <md-card layout="column" flex="90">
-      <md-card-title>
-        <md-card-title-text layout-align="start center" >
-          <div class="md-headline">Account Ledger</div>
-        </md-card-title-text>
-      </md-card-title>
-      <div layout="row" class="ledger-div-format">
-        <span flex="5"></span>
-        <div flex="2">Add2Check </div>
-        <div flex="8">Check</div>
-        <div flex="10">Date</div>
-        <div flex="20">Transaction</div>
-        <div flex="10">Category</div>
-        <div flex="10">Type</div>
-        <div flex="10">Check Amount</div>
-        <div flex="10">Running Total <br>{{currentlySelectedAccount()}}</div>
-        <div flex="10"></div>
-      </div>
-        <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in ledgerItems" layout-align="end center" ng-init="wasClicked = false" >
-        <span flex="5"></span>
-          <md-button layout-align="start" ng-class="{'background-green': wasClicked === true}" ng-click="wasClicked = !wasClicked; onLedgerChecked(lineItem)" aria-label="Add2Check"><img style="width: 25px; margin: 0 auto 0 auto;" ng-src="{{wasClicked && 'img/checkmark.svg' || 'img/writer.svg'}}"></md-button>
-          <div flex="8" >{{lineItem.checkNum}}</div>
-          <div flex="10">{{lineItem.checkDate}}</div>
-          <div flex="20">{{lineItem.transaction}}</div>
-          <div flex="10">{{lineItem.category}}</div>
-          <div flex="10">{{lineItem.type}}</div>
-          <div flex="10" ng-class="lineItem.type === 'Withdrawl' ? 'red-bold' : 'black-bold'">{{lineItem.checkAmount}}</div>
-          <div flex="10">{{calcLineItemTotal(lineItem)}}</div>
-          <div flex="10"><img ng-src="img/edit.svg" style="display: inline; margin-right: 15px; width: 15px;" ng-click="editLineItem(lineItem)" aria-label="Edit Line Item"><img ng-src="img/delete.svg" style="display: inline; width: 15px;" ng-click="deleteLineItem(lineItem)" aria-label="Delete Line Item"></div>
-        </div>
-    </md-card>
-  </md-content>
-</div>
+      <md-content class="md-padding" layout="column" >
+        <md-card layout="column" flex="90">
+          <md-card-title>
+            <md-card-title-text layout-align="start center" >
+              <div class="md-headline">Account Ledger</div>
+            </md-card-title-text>
+          </md-card-title>
+          <div layout="row" class="ledger-div-format">
+            <span flex="5"></span>
+            <div flex="2">Add2Check </div>
+            <div flex="8">Check</div>
+            <div flex="10">Date</div>
+            <div flex="20">Transaction</div>
+            <div flex="10">Category</div>
+            <div flex="10">Type</div>
+            <div flex="10">Check Amount</div>
+            <div flex="10">Running Total <br>{{currentlySelectedAccount()}}</div>
+            <div flex="10"></div>
+          </div>
+            <div layout="row" class="ledger-div-padding" ng-class-odd="'ledger-div-odd-color'" ng-repeat="lineItem in ledgerItems" layout-align="end center" ng-init="wasClicked = false" >
+            <span flex="5"></span>
+              <md-button layout-align="start" ng-class="{'background-green': wasClicked === true}" ng-click="wasClicked = !wasClicked; onLedgerChecked(lineItem)" aria-label="Add2Check"><img style="width: 25px; margin: 0 auto 0 auto;" ng-src="{{wasClicked && 'img/checkmark.svg' || 'img/writer.svg'}}"></md-button>
+              <div flex="8" >{{lineItem.checkNum}}</div>
+              <div flex="10">{{lineItem.checkDate}}</div>
+              <div flex="20">{{lineItem.transaction}}</div>
+              <div flex="10">{{lineItem.category}}</div>
+              <div flex="10">{{lineItem.type}}</div>
+              <div flex="10" ng-class="lineItem.type === 'Withdrawl' ? 'red-bold' : 'black-bold'">{{lineItem.checkAmount}}</div>
+              <div flex="10">{{calcLineItemTotal(lineItem)}}</div>
+              <div flex="10"><img ng-src="img/edit.svg" style="display: inline; margin-right: 15px; width: 15px;" ng-click="editLineItem(lineItem)" aria-label="Edit Line Item"><img ng-src="img/delete.svg" style="display: inline; width: 15px;" ng-click="deleteLineItem(lineItem)" aria-label="Delete Line Item"></div>
+            </div>
+        </md-card>
+      </md-content>
+    </md-tab>
+
+    <md-tab label="Overall Account View">
+      <md-content>
+        <h1>placeholder</h1>
+      </md-content>
+    </md-tab>
+
+    <md-tab label="Ledger Item View">
+      <md-content>
+        <h1>placeholder</h1>
+      </md-content>
+    </md-tab>
+
+  </md-tabs>
+</md-content>
+
+
   
