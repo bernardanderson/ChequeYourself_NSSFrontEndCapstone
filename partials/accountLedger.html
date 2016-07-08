@@ -76,8 +76,8 @@
       </md-content>
     </md-tab>
 
-    <md-tab label="Overall Account View">
-      <md-content layout="row">
+    <md-tab label="Account Overview">
+      <md-content layout="row" layout-align="center center">
 
         <md-card flex="45" class="pie-charts" layout-align="center center">
           <h3><span style="color: {{depositsWithdrawls.colors[0]}};" >Deposits</span> versus <span style="color: {{depositsWithdrawls.colors[1]}};" >Withdrawls</span></h3>
@@ -93,9 +93,23 @@
 
     </md-tab>
 
-    <md-tab label="Ledger Item View">
-      <md-content>
-        <h1>placeholder</h1>
+    <md-tab label="Single Ledger Item View">
+      <md-content layout="row" layout-align="center center">
+
+        <md-card flex="65" class="pie-charts" layout-align="center center">
+          <h3>Sequential Single Item Expenditures</h3>
+          <canvas id="bar0" class="chart chart-bar" chart-data="singleExpenditure.data" chart-labels="singleExpenditure.labels" chart-options="singleExpenditure.options"></canvas>
+        
+          <md-input-container flex="50">
+            <md-select ng-model="singleLedgerItemBar" ng-change="updateBarGraph(singleLedgerItemBar)">
+              <label class="sm-font">Select a Single Ledger Item</label>
+              <md-option ng-repeat="singleLedgerItem in singleExpenditure.arrayListNoRepeats" value="{{singleLedgerItem}}">
+                {{singleLedgerItem}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </md-card>
+
       </md-content>
     </md-tab>
 

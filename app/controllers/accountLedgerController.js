@@ -9,18 +9,35 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
   $scope.categories = ["Home", "Utilities", "Entertainment", "Misc"];
 
 
-  // Variables for Deposit versus Withdrawl Pie Chart
+  // Variable for Deposit versus Withdrawl Pie Chart
   $scope.depositsWithdrawls = {
     labels: ["Deposits", "Withdrawls"],
     data: [0, 0],
     colors: ['#487257','#F26979']
-  }
+  };
 
-  // Variables for Category Pie Chart
+  // Variable for Category Pie Chart
   $scope.categoryPie = {
     labels: $scope.categories,
     data: [0, 0, 0, 0]
-  }
+  };
+
+  // Variable for Single Item Expenditure Bar Chart
+  $scope.singleExpenditure = {
+    arrayListNoRepeats: [],
+    labels: ["Nothing Selected"],
+    data: [0],
+    options:  {
+      scales: {
+        yAxes: [{
+          display: true,
+          ticks: {
+            beginAtZero: true   // minimum value will be 0.
+          }
+        }]
+      }
+    }
+  };
 
   navBarFactory.changeNavBarTitle("Account Ledger");
 
@@ -66,8 +83,10 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
       for (var singleItem in completeLedgerList) {
         if (completeLedgerList[singleItem].accountID === localDataStorageFactory.selectedAccount[0].accountID) {
 
+          // Sorts the ledger items for graphical viewing
           $scope.sortDepositsWithdrawlPie(completeLedgerList[singleItem]);
           $scope.sortCategoryPie(completeLedgerList[singleItem]);
+          $scope.sortSingleItem(completeLedgerList[singleItem]);
 
           $scope.ledgerItems.push(completeLedgerList[singleItem]);
 
@@ -96,6 +115,36 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
         }
       }
     }
+  };
+
+  // This takes the current ledger list and gets the names of items but doesn't allow
+  //  any repeats
+  $scope.sortSingleItem = function(sentSingleLedgerItem) {
+    if ($scope.singleExpenditure.arrayListNoRepeats.indexOf(sentSingleLedgerItem.transaction) === -1) {
+      $scope.singleExpenditure.arrayListNoRepeats.push(sentSingleLedgerItem.transaction);
+    }
+  };
+
+  // Once a single Ledger Item is select for graphing, this picks the date and expenditure
+  //  info and puts it in the appropriate variables
+  $scope.updateBarGraph = function(sentSingleLedgerItemName){
+
+    let tempItemArray = 
+      {
+        labels: [],
+        data: []
+      };
+
+    for (var i = 0; i < $scope.ledgerItems.length; i++) {
+      if ($scope.ledgerItems[i].transaction === sentSingleLedgerItemName) {
+        tempItemArray.labels.push($scope.ledgerItems[i].checkDate);
+        tempItemArray.data.push(Number(($scope.ledgerItems[i].checkAmount).slice(1)));
+      }
+    }
+
+    $scope.singleExpenditure.labels = tempItemArray.labels;
+    $scope.singleExpenditure.data = tempItemArray.data;
+
   };
 
   // Deletes a single ledger item from the currentLedgerItems array
