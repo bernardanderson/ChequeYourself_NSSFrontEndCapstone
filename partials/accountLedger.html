@@ -3,7 +3,7 @@
     <md-tab label="Ledger">
       <md-content md-theme="special-input" layout="row" layout-align="center" layout-padding class="new-transaction-input">
       <h5 flex="10">New Entry Item</h5>
-      <md-input-container flex="5">
+      <md-input-container flex="10">
         <label class="sm-font">Date</label>
         <input ng-model="newSingleLineItem.checkDate">
       </md-input-container>
@@ -77,7 +77,19 @@
     </md-tab>
 
     <md-tab label="Overall Account View">
+      <md-content layout="row">
 
+        <md-card flex="45" class="pie-charts" layout-align="center center">
+          <h3><span style="color: {{depositsWithdrawls.colors[0]}};" >Deposits</span> versus <span style="color: {{depositsWithdrawls.colors[1]}};" >Withdrawls</span></h3>
+          <canvas id="pie1" class="chart chart-pie" chart-data="depositsWithdrawls.data" chart-labels="depositsWithdrawls.labels" chart-colors="depositsWithdrawls.colors" chart-options="options"></canvas>
+        </md-card>
+
+        <md-card flex="45" class="pie-charts" layout-align="center center">
+          <h3>Expenditure Breakdown by Category</h3>
+          <canvas id="pie2" class="chart chart-pie" chart-data="categoryPie.data" chart-labels="categoryPie.labels" chart-options="options"></canvas>
+        </md-card>
+
+      </md-content>
 
     </md-tab>
 

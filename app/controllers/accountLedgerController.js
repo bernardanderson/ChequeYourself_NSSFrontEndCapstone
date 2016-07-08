@@ -8,6 +8,20 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   $scope.categories = ["Home", "Utilities", "Entertainment", "Misc"];
 
+
+  // Variables for Deposit versus Withdrawl Pie Chart
+  $scope.depositsWithdrawls = {
+    labels: ["Deposits", "Withdrawls"],
+    data: [0, 0],
+    colors: ['#487257','#F26979']
+  }
+
+  // Variables for Category Pie Chart
+  $scope.categoryPie = {
+    labels: $scope.categories,
+    data: [0, 0, 0, 0]
+  }
+
   navBarFactory.changeNavBarTitle("Account Ledger");
 
   localDataStorageFactory.selectedAccount.splice(0);
@@ -51,13 +65,34 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     if (localDataStorageFactory.selectedAccount.length > 0) {
       for (var singleItem in completeLedgerList) {
         if (completeLedgerList[singleItem].accountID === localDataStorageFactory.selectedAccount[0].accountID) {
-          // if (completeLedgerList[singleItem].type === "Withdrawl") {
-          //   $scope.withdrawlDeposit.data[1].value = $scope.withdrawlDeposit.data[1].value + Number((completeLedgerList[singleItem].checkAmount).slice(1));
-          // } else {
-          //   $scope.withdrawlDeposit.data[0].value = $scope.withdrawlDeposit.data[0].value + Number((completeLedgerList[singleItem].checkAmount).slice(1));
-          // }
+
+          $scope.sortDepositsWithdrawlPie(completeLedgerList[singleItem]);
+          $scope.sortCategoryPie(completeLedgerList[singleItem]);
+
           $scope.ledgerItems.push(completeLedgerList[singleItem]);
 
+        }
+      }
+    }
+  };
+
+  // This sorts and stores the deposit and withdrawl money values for displaying in the
+  //  Deposit versus Withdrawl Pie Chart
+  $scope.sortDepositsWithdrawlPie = function(sentSingleItem) {
+    if (sentSingleItem.type === "Withdrawl") {
+      $scope.depositsWithdrawls.data[1] = $scope.depositsWithdrawls.data[1] + Number((sentSingleItem.checkAmount).slice(1));
+    } else {
+      $scope.depositsWithdrawls.data[0] = $scope.depositsWithdrawls.data[0] + Number((sentSingleItem.checkAmount).slice(1));
+    }
+  };
+
+  // This sorts and stores the category money values for display on the Category Pie Chart
+  $scope.sortCategoryPie = function(sentSingleItem) {
+    if (sentSingleItem.type === "Withdrawl") {
+      for (var i = 0 ; i < $scope.categories.length; i++) {
+        if (sentSingleItem.category === $scope.categories[i]) {
+          $scope.categoryPie.data[i] = $scope.categoryPie.data[i] + Number((sentSingleItem.checkAmount).slice(1));
+          break;
         }
       }
     }
@@ -157,8 +192,8 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     console.log("localDataStorageFactory.selectedAccount.length: ", newVal.length);
     if (newVal.length > 0){
 
-      $scope.withdrawls = 0;
-      $scope.deposits = 0;
+      $scope.depositsWithdrawls.data = [0,0];
+      $scope.categoryPie.data = [0, 0, 0, 0];
 
       $scope.disableNewLedgerAddition = false;
       $scope.accountItems();
@@ -170,6 +205,10 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   // This watches for a change in the currentLedger items and updates the ledger list
   $scope.$watchCollection(function() {return localDataStorageFactory.currentLedgerItems;}, function(newVal, oldVal) {
+
+    $scope.depositsWithdrawls.data = [0,0];
+    $scope.categoryPie.data = [0, 0, 0, 0];
+
     $scope.accountItems();
   });
 
