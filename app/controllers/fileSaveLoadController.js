@@ -47,10 +47,11 @@ app.controller("fileSaveLoadController", function($scope, navBarFactory, localDa
 
   $scope.loadFile = function(sentLogin) {
     FileHandlerFactory.decryptAddToArrays(sentLogin);
+    navBarFactory.setCurrentView('accountLedger');
   };
 
-  $scope.quickCheck = function(sentData) {
-    return sjcl.encrypt(sentData);
-  };
+  // $scope.quickCheck = function(sentData) {
+  //   return sjcl.encrypt(sentData);
+  // };
 
 });
