@@ -1,6 +1,6 @@
 <md-content class="navbar-overflow" layout="column">
   <md-toolbar class="md-toolbar-tools">
-    <h2><span ng-repeat="currentTitle in navTitle">{{currentTitle}}</span></h2>
+    <h2>Check-Yourself! - <span ng-repeat="currentTitle in navTitle">{{currentTitle}}</span></h2>
     <span flex></span>
     <md-input-container style="color: black; background-color: rgb(250,250,250); border-radius: 3px" ng-if="currentView === 'accountLedger' && atLeastOneAccount ">
       <md-select placeholder="Choose Account" aria-label="Account List" ng-model="selectedAccount" md-on-close="sendAccount(selectedAccount)">

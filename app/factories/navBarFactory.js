@@ -18,7 +18,7 @@ app.factory("navBarFactory", function(){
     //  Changes the NavBar Title on page load
     changeNavBarTitle: function(sentTitle) {
       this.navTitle.splice(0);
-      this.navTitle.push(`Cheque-Yourself! - ${sentTitle}`);
+      this.navTitle.push(`${sentTitle}`);
     },
 
     // Changes the NavBar buttons according to the current view

@@ -2,13 +2,46 @@
 
 app.controller("accountLedgerController", function($scope, navBarFactory, localDataStorageFactory){
 
-  navBarFactory.changeNavBarTitle("Account Ledger");
-
   $scope.newSingleLineItem = {};
 
-  localDataStorageFactory.selectedAccount.splice(0);
-
   $scope.ledgerItems = [];
+
+  $scope.categories = ["Home", "Utilities", "Entertainment", "Misc"];
+
+
+  // Variable for Deposit versus Withdrawl Pie Chart
+  $scope.depositsWithdrawls = {
+    labels: ["Deposits", "Withdrawls"],
+    data: [0, 0],
+    colors: ['#487257','#F26979']
+  };
+
+  // Variable for Category Pie Chart
+  $scope.categoryPie = {
+    labels: $scope.categories,
+    data: [0, 0, 0, 0]
+  };
+
+  // Variable for Single Item Expenditure Bar Chart
+  $scope.singleExpenditure = {
+    arrayListNoRepeats: [],
+    labels: ["Nothing Selected"],
+    data: [0],
+    options:  {
+      scales: {
+        yAxes: [{
+          display: true,
+          ticks: {
+            beginAtZero: true   // minimum value will be 0.
+          }
+        }]
+      }
+    }
+  };
+
+  navBarFactory.changeNavBarTitle("Account Ledger");
+
+  localDataStorageFactory.selectedAccount.splice(0);
 
   // Resets the editting mode to false when returning to the Account Ledger
   localDataStorageFactory.isEditClick = false;
@@ -49,10 +82,69 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     if (localDataStorageFactory.selectedAccount.length > 0) {
       for (var singleItem in completeLedgerList) {
         if (completeLedgerList[singleItem].accountID === localDataStorageFactory.selectedAccount[0].accountID) {
+
+          // Sorts the ledger items for graphical viewing
+          $scope.sortDepositsWithdrawlPie(completeLedgerList[singleItem]);
+          $scope.sortCategoryPie(completeLedgerList[singleItem]);
+          $scope.sortSingleItem(completeLedgerList[singleItem]);
+
           $scope.ledgerItems.push(completeLedgerList[singleItem]);
+
         }
       }
     }
+  };
+
+  // This sorts and stores the deposit and withdrawl money values for displaying in the
+  //  Deposit versus Withdrawl Pie Chart
+  $scope.sortDepositsWithdrawlPie = function(sentSingleItem) {
+    if (sentSingleItem.type === "Withdrawl") {
+      $scope.depositsWithdrawls.data[1] = $scope.depositsWithdrawls.data[1] + Number((sentSingleItem.checkAmount).slice(1));
+    } else {
+      $scope.depositsWithdrawls.data[0] = $scope.depositsWithdrawls.data[0] + Number((sentSingleItem.checkAmount).slice(1));
+    }
+  };
+
+  // This sorts and stores the category money values for display on the Category Pie Chart
+  $scope.sortCategoryPie = function(sentSingleItem) {
+    if (sentSingleItem.type === "Withdrawl") {
+      for (var i = 0 ; i < $scope.categories.length; i++) {
+        if (sentSingleItem.category === $scope.categories[i]) {
+          $scope.categoryPie.data[i] = $scope.categoryPie.data[i] + Number((sentSingleItem.checkAmount).slice(1));
+          break;
+        }
+      }
+    }
+  };
+
+  // This takes the current ledger list and gets the names of items but doesn't allow
+  //  any repeats
+  $scope.sortSingleItem = function(sentSingleLedgerItem) {
+    if ($scope.singleExpenditure.arrayListNoRepeats.indexOf(sentSingleLedgerItem.transaction) === -1) {
+      $scope.singleExpenditure.arrayListNoRepeats.push(sentSingleLedgerItem.transaction);
+    }
+  };
+
+  // Once a single Ledger Item is select for graphing, this picks the date and expenditure
+  //  info and puts it in the appropriate variables
+  $scope.updateBarGraph = function(sentSingleLedgerItemName){
+
+    let tempItemArray = 
+      {
+        labels: [],
+        data: []
+      };
+
+    for (var i = 0; i < $scope.ledgerItems.length; i++) {
+      if ($scope.ledgerItems[i].transaction === sentSingleLedgerItemName) {
+        tempItemArray.labels.push($scope.ledgerItems[i].checkDate);
+        tempItemArray.data.push(Number(($scope.ledgerItems[i].checkAmount).slice(1)));
+      }
+    }
+
+    $scope.singleExpenditure.labels = tempItemArray.labels;
+    $scope.singleExpenditure.data = tempItemArray.data;
+
   };
 
   // Deletes a single ledger item from the currentLedgerItems array
@@ -143,12 +235,18 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     }
   };
 
+
   //Watches for selection in the navBar selected account list
   $scope.$watchCollection(function() {return localDataStorageFactory.selectedAccount;}, function(newVal, oldVal) {
     console.log("localDataStorageFactory.selectedAccount.length: ", newVal.length);
     if (newVal.length > 0){
+
+      $scope.depositsWithdrawls.data = [0,0];
+      $scope.categoryPie.data = [0, 0, 0, 0];
+
       $scope.disableNewLedgerAddition = false;
       $scope.accountItems();
+
     } else {
       $scope.disableNewLedgerAddition = true;
     }
@@ -156,6 +254,10 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   // This watches for a change in the currentLedger items and updates the ledger list
   $scope.$watchCollection(function() {return localDataStorageFactory.currentLedgerItems;}, function(newVal, oldVal) {
+
+    $scope.depositsWithdrawls.data = [0,0];
+    $scope.categoryPie.data = [0, 0, 0, 0];
+
     $scope.accountItems();
   });
 
