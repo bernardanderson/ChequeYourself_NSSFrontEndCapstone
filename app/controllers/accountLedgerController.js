@@ -2,15 +2,15 @@
 
 app.controller("accountLedgerController", function($scope, navBarFactory, localDataStorageFactory){
 
-  navBarFactory.changeNavBarTitle("Account Ledger");
-
   $scope.newSingleLineItem = {};
-
-  localDataStorageFactory.selectedAccount.splice(0);
 
   $scope.ledgerItems = [];
 
   $scope.categories = ["Home", "Utilities", "Entertainment", "Misc"];
+
+  navBarFactory.changeNavBarTitle("Account Ledger");
+
+  localDataStorageFactory.selectedAccount.splice(0);
 
   // Resets the editting mode to false when returning to the Account Ledger
   localDataStorageFactory.isEditClick = false;
@@ -51,7 +51,13 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     if (localDataStorageFactory.selectedAccount.length > 0) {
       for (var singleItem in completeLedgerList) {
         if (completeLedgerList[singleItem].accountID === localDataStorageFactory.selectedAccount[0].accountID) {
+          // if (completeLedgerList[singleItem].type === "Withdrawl") {
+          //   $scope.withdrawlDeposit.data[1].value = $scope.withdrawlDeposit.data[1].value + Number((completeLedgerList[singleItem].checkAmount).slice(1));
+          // } else {
+          //   $scope.withdrawlDeposit.data[0].value = $scope.withdrawlDeposit.data[0].value + Number((completeLedgerList[singleItem].checkAmount).slice(1));
+          // }
           $scope.ledgerItems.push(completeLedgerList[singleItem]);
+
         }
       }
     }
@@ -145,12 +151,18 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
     }
   };
 
+
   //Watches for selection in the navBar selected account list
   $scope.$watchCollection(function() {return localDataStorageFactory.selectedAccount;}, function(newVal, oldVal) {
     console.log("localDataStorageFactory.selectedAccount.length: ", newVal.length);
     if (newVal.length > 0){
+
+      $scope.withdrawls = 0;
+      $scope.deposits = 0;
+
       $scope.disableNewLedgerAddition = false;
       $scope.accountItems();
+
     } else {
       $scope.disableNewLedgerAddition = true;
     }
