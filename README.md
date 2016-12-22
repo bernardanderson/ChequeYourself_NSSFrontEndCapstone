@@ -1,4 +1,4 @@
-# NSS Capstone: "Cheque-Youself!"
+# NSS Capstone: "Cheque-Yourself!"
 
 ### Specs:
 > Create a Front-End Browser Rich Application that utilizes the following:
