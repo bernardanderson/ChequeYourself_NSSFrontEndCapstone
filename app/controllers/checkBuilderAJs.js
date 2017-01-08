@@ -79,8 +79,6 @@ app.controller("checkBuilderAJs", function($scope, XHRFactory, navBarFactory, lo
 
   // Watcher for the click of the "Clear Checks" button
   $scope.$watchCollection(function() {return localDataStorageFactory.selectedLineItemsForPrint;}, function(newVal, oldVal) {
-    console.log("newVal.length: ", newVal.length);
-    console.log("newVal: ", newVal);
     if (newVal.length === 0){
       $scope.checkData = {
         bankAddress: null,

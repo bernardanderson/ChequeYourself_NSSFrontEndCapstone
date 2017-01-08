@@ -84,7 +84,6 @@ app.controller("newAccountController", function($scope, navBarFactory, localData
     }
 
     localDataStorageFactory.isEditClick = false;
-    console.log("Result of newAccount in localDataStorage: ", localDataStorageFactory.currentAccounts);
     navBarFactory.setCurrentView('accountLedger');
   };
 
