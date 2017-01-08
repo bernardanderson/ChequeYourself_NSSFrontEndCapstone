@@ -23,7 +23,6 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
   // This is exclusively for the initial appChoice view page
   $scope.clickedChoice = function(sentNewView, sentParameters) {
 
-    console.log("Clicked Choice: ", sentNewView, sentParameters);
     if (sentParameters === "Edit") {
       localDataStorageFactory.isEditClick = true;
     } else if (sentParameters === "ClearChecks") {
@@ -44,24 +43,18 @@ app.controller("navBarController", function($scope, navBarFactory, localDataStor
 
   //Watches for any click changes in the current "Main Page" view
   $scope.$watch(function() {return navBarFactory.currentView;}, function(newVal, oldVal) {
-    console.log(oldVal, newVal);
     if (newVal !== undefined){
       $scope.currentView = newVal;
-      console.log("The current view in navBarController: ", $scope.currentView);
     }
   });
 
   // This may not be needed due to the ng-repeat
   //Watches for changes in the current accounts list
   $scope.$watchCollection(function() {return localDataStorageFactory.currentAccounts;}, function(newVal, oldVal) {
-    // console.log("newVal.length: ", newVal.length);
     if (newVal.length === 0){
       $scope.atLeastOneAccount = false;
-      // $scope.accountsArray.splice(0);
     } else {
       $scope.atLeastOneAccount = true;
-      // $scope.accountsArray = localDataStorageFactory.currentAccounts;
-      // console.log("The current status of atLeastOneAccount: ", $scope.atLeastOneAccount)
     }
   });
 

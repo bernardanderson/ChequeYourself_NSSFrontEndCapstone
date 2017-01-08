@@ -238,7 +238,6 @@ app.controller("accountLedgerController", function($scope, navBarFactory, localD
 
   //Watches for selection in the navBar selected account list
   $scope.$watchCollection(function() {return localDataStorageFactory.selectedAccount;}, function(newVal, oldVal) {
-    console.log("localDataStorageFactory.selectedAccount.length: ", newVal.length);
     if (newVal.length > 0){
 
       $scope.depositsWithdrawls.data = [0,0];

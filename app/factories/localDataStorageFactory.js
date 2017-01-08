@@ -57,7 +57,6 @@ app.factory("localDataStorageFactory", function(XHRFactory){
     // Adds a single ledger item to the complete list of ledger items
     addNewAccountLedgerItem: function(sentSingleLedgerItem) {
       this.currentLedgerItems.push(sentSingleLedgerItem);
-      console.log(this.currentLedgerItems);
     },
 
     // After an account is selected, this pulls the ledger items and adds the
